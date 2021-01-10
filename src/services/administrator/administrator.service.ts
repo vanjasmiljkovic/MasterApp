@@ -10,6 +10,7 @@ export class AdministratorService {
         private readonly administrator: Repository<Administrator>
     ) { }
 
+    //poziva find koji pronalazi sve zapise koji u tabeli dobijenoj kroz repozitorijum entiteta Administrator
     getAll(): Promise<Administrator[]>{ //funkcija getAll treba da vrati obecanje da ce vratiti niz administratora
         //find vraca promise da ce nam biti vracena lista svih administratora iz tabele administrator
         return this.administrator.find(); 
@@ -18,4 +19,8 @@ export class AdministratorService {
     getById(id: number): Promise<Administrator>{
         return this.administrator.findOne(id);
     }
+
+    //add
+    //editById
+    //deleteById
 }
