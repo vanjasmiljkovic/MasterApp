@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
+import { AppController } from './controllers/app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseConfiguration } from 'config/database.configuration';
 import { Administrator } from 'entities/administrator.entity';
@@ -14,6 +14,8 @@ import { Feature } from 'entities/feature.entity';
 import { Order } from 'entities/order.entity';
 import { Photo } from 'entities/photo.entity';
 import { User } from 'entities/user.entity';
+import { AdministratorController } from './controllers/api/administrator.controller';
+import { Documentation } from 'entities/documentation.entity';
 
 //
 @Module({
@@ -36,12 +38,16 @@ import { User } from 'entities/user.entity';
         Feature,
         Order,
         Photo,
+        Documentation,
         User
       ] //povezali smo entitet
     }),
     TypeOrmModule.forFeature([ Administrator ])
   ],
-  controllers: [AppController],
+  controllers: [
+    AppController,
+    AdministratorController, 
+  ],
   providers: [AdministratorService], //komunikacija sa eksternim resursima - baza, api ...
 })
 export class AppModule {}

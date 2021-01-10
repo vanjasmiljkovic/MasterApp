@@ -9,7 +9,7 @@ import {
 import { Article } from "./article.entity";
 
 @Index("uq_photo_image_path", ["imagePath"], { unique: true })
-@Index("fk_photo_article_id_idx", ["articleId"], {})
+@Index("fk_photo_article_id", ["articleId"], {})
 @Entity("photo")
 export class Photo {
   @PrimaryGeneratedColumn({ type: "int", name: "photo_id", unsigned: true })

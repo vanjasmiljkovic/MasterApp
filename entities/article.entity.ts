@@ -12,6 +12,7 @@ import { ArticleFeature } from "./article-feature.entity";
 import { ArticlePrice } from "./article-price.entity";
 import { CartArticle } from "./cart-article.entity";
 import { Photo } from "./photo.entity";
+import { Documentation } from "./documentation.entity";
 
 @Index("fk_article_category_id_idx", ["categoryId"], {})
 @Entity("article")
@@ -82,4 +83,9 @@ export class Article {
   (photo) => photo.article
   )
   photos: Photo[];
+
+  @OneToMany(() => Documentation, 
+  (documentation) => documentation.article
+  )
+  documentations: Documentation[];
 }
