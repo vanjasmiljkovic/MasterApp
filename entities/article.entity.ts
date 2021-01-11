@@ -3,6 +3,8 @@ import {
   Entity,
   Index,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -13,6 +15,7 @@ import { ArticlePrice } from "./article-price.entity";
 import { CartArticle } from "./cart-article.entity";
 import { Photo } from "./photo.entity";
 import { Documentation } from "./documentation.entity";
+import { Feature } from "./feature.entity";
 
 @Index("fk_article_category_id_idx", ["categoryId"], {})
 @Entity("article")
@@ -67,7 +70,15 @@ export class Article {
     () => ArticleFeature, 
     articleFeature => articleFeature.article
   )
-  articleFeatures: ArticleFeature[];
+  articleFeatures: ArticleFeature[]; //vrednosti feature-a
+
+  @ManyToMany(type => Feature, feature => feature.articles)
+  @JoinTable({
+    name: "article_feature",
+    joinColumn: { name: "article_id", referencedColumnName: "articleId" },
+    inverseJoinColumn: {name: "feature_id", referencedColumnName: "featureId" }
+  })
+  features: Feature[]; //svi feature-i kako se zovu i o njima detaljnije
 
   @OneToMany(() => ArticlePrice, 
     articlePrice => articlePrice.article

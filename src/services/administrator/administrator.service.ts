@@ -5,6 +5,7 @@ import { AddAdministratorDto } from 'src/dtos/administrator/add.aministrator.dto
 import { EditAdministratorDto } from 'src/dtos/administrator/edit.administrator.dto';
 import { ApiResponse } from 'src/misc/api.response.class';
 import { Repository } from 'typeorm';
+import * as crypto from 'crypto';
 
 @Injectable()
 export class AdministratorService {
@@ -53,8 +54,8 @@ export class AdministratorService {
                 resolve(new ApiResponse("error", -1002))
             });
         }
-
-        const crypto = require('crypto');                   //DTO -> Model transformacija  
+                     
+        //DTO -> Model transformacija  
         const passwordHash = crypto.createHash('sha512');    //username -> username
         passwordHash.update(data.password);                  //password -[~] -> passwordHash SHA512
         const passwordHashString = passwordHash.digest('hex').toUpperCase();
