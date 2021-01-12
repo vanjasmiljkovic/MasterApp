@@ -20,13 +20,25 @@ export class AdministratorService {
         return this.administrator.find(); 
     }
 
+    async getByUsername(username: string): Promise<Administrator | null> {
+        const admin = await this.administrator.findOne({
+            username: username
+        });
+
+        if(admin){
+            return admin;
+        }
+
+        return null;
+    }
+
     getById(id: number): Promise<Administrator>{
         return this.administrator.findOne(id);
     }
 
     //pravljenje novog administratora
     add(data: AddAdministratorDto): Promise<Administrator | ApiResponse> {  //nas servis dobija neki objekat data koji je zapravo AdministratorDto i vraca Administratora ili ApiResponse ako dodje do greske
-        const crypto = require('crypto');                   //DTO -> Model transformacija  
+       //DTO -> Model transformacija  
         const passwordHash = crypto.createHash('sha512');    //username -> username
         passwordHash.update(data.password);                  //password -[~] -> passwordHash SHA512
         const passwordHashString = passwordHash.digest('hex').toUpperCase();

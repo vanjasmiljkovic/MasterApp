@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './controllers/app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseConfiguration } from 'config/database.configuration';
@@ -20,6 +20,8 @@ import { CategoryController } from './controllers/api/category.controller';
 import { CategoryService } from './services/category/category.service';
 import { ArticleService } from './services/article/article.service';
 import { ArticleController } from './controllers/api/article.controller';
+import { AuthController } from './controllers/api/auth.controller';
+import { AuthMiddleware } from './middlewares/auth.middleware';
 
 //
 @Module({
@@ -50,6 +52,8 @@ import { ArticleController } from './controllers/api/article.controller';
       Administrator,
       Category,
       Article,
+      ArticlePrice,
+      ArticleFeature,
     ])
   ],
   controllers: [
@@ -57,11 +61,22 @@ import { ArticleController } from './controllers/api/article.controller';
     AdministratorController, 
     CategoryController,
     ArticleController,
+    AuthController,
   ],
   providers: [ //komunikacija sa eksternim resursima - baza, api ...
     AdministratorService,
     CategoryService,
     ArticleService,
   ], 
+  exports: [
+    AdministratorService,
+  ],
 })
-export class AppModule {}
+export class AppModule implements NestModule{
+  configure(consumer: MiddlewareConsumer) { //ovaj Consumer treba da primeni Middleware
+    consumer
+      .apply(AuthMiddleware) //primeni AuthMiddleware na sve rute koje nisu auth/* a jesu api/*
+      .exclude('auth/*')
+      .forRoutes('api/*');
+  } 
+}
