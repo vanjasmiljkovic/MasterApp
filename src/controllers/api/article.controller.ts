@@ -1,8 +1,14 @@
-import { Body, Controller, Post } from "@nestjs/common";
+import { Body, Controller, Param, Post, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { FileInterceptor } from "@nestjs/platform-express";
 import { Crud } from "@nestjsx/crud";
+import { StorageConfig } from "config/storage.config";
 import { Article } from "entities/article.entity";
 import { AddArticleDto } from "src/dtos/article/add.article.dto";
 import { ArticleService } from "src/services/article/article.service";
+import { diskStorage } from "multer";
+import { PhotoService } from "src/services/photo/photo.service";
+import { Photo } from "entities/photo.entity";
+import { ApiResponse } from "src/misc/api.response.class";
 
 @Controller('api/article')
 @Crud({  //zelimo da imamo Crud operacije za model podataka koji je definisan tipom propisanim u definiciji Category entiteta
@@ -40,10 +46,84 @@ import { ArticleService } from "src/services/article/article.service";
     }
 })
 export class ArticleController {
-    constructor(public service: ArticleService) {}
+    constructor(
+        public service: ArticleService, 
+        public photoService: PhotoService    
+    ) {}
 
     @Post('createFull') //POST http://localhost:3000/api/article/createFull/
     createFullArticle(@Body() data: AddArticleDto){
         return this.service.createFullArticle(data);
+    }
+
+    @Post(':id/uploadPhoto/') //POST https://localhost:3000/api/article/:id/uploadPhoto/
+    @UseInterceptors(
+        FileInterceptor('photo', {
+            storage: diskStorage({
+                destination: StorageConfig.photoDestination,
+                filename: (req, file, callback) => { //ova funkcija generise file name na osnovu originalnog file name-a
+                    // 'Neka   slika.jpg' -> 20200420-3456765432-Neka-slika.jpg datum-random 10 brojeva i naziv slike
+
+                    let original: string = file.originalname;
+
+                    let normalized = original.replace(/\s+/g, '-'); //bilo koju belinu koja se ponavlja jednom ili vise puta na nivou celog stringa zameni jednom -
+                    normalized = normalized.replace(/[^A-z0-9\.\-]/g, ''); //sve sto nije slova od a do z brojevi, tacka i - zameni praznim stringom
+                    let now = new Date();
+                    let datePart = '';
+                    datePart += now.getFullYear().toString();
+                    datePart += (now.getMonth() + 1).toString();
+                    datePart += now.getDate().toString();
+
+                    let randomPart: string = 
+                    new Array(10)  // novi niz ciji
+                        .fill(0)
+                        .map(e => (Math.random() * 9).toFixed(0).toString()) //svaki element menjamo sa random vrednoscu string od 0 do 9 
+                        .join('');  //joinujemo sve te pojedinacne elemente i upisemo u randomPart
+
+                    let fileName = datePart + '-' + randomPart + '-' + normalized;
+
+                    fileName = fileName.toLowerCase();
+
+                    callback(null, fileName);
+                }
+            }),
+            fileFilter: (req, file, callback) => {
+                //1. proveri ektenzije: JPG, PNG
+                if(!file.originalname.toLowerCase().match(/\.(jpg|png)$/)){
+                    callback(new Error('Bad file extension!'), false); //vracamo false - ne prihvatamo takav fajl
+                    return;
+                }
+                //2. Tip sadrzaja: image/jpeg, image/png (mimetype)
+                if (!(file.mimetype.includes('jpeg') || file.mimetype.includes('png'))){
+                    callback(new Error('Bad file content!'), false); //vracamo false - ne prihvatamo takav fajl
+                    return;
+                }
+                //Kada je sve kako treba
+                callback(null, true); //nema erora, true znaci prihvatiti taj fajl
+
+            },
+            limits: {
+                files: 1, //dozvoljavamo da se upload 1 fajl
+                fieldSize: StorageConfig.photoMaxFileSize, //taj max kapacitet je definisam u photo.config
+            },
+
+        })
+    )
+
+    //KADA JE FAJL UPLOAD-OVAN pravi se zapis koji se salje bazi podataka posredstvom servisa 
+    async uploadPhoto(@Param('id') articleId: number, @UploadedFile() photo): Promise < ApiResponse | Photo> {
+        let imagePath = photo.filename; //u zapis u bazu podataka
+
+        const newPhoto: Photo = new Photo();
+        newPhoto.articleId = articleId;
+        newPhoto.imagePath = imagePath;
+
+        const savedPhoto = await this.photoService.add(newPhoto); //add iz photoService
+
+        if (!savedPhoto) {
+            return new ApiResponse('error', -4001);
+        }
+
+        return savedPhoto; //uspesno sacuvana fotografija
     }
 }
