@@ -9,6 +9,10 @@ import { diskStorage } from "multer";
 import { PhotoService } from "src/services/photo/photo.service";
 import { Photo } from "entities/photo.entity";
 import { ApiResponse } from "src/misc/api.response.class";
+import * as fileType from 'file-type';
+import * as fs from 'fs';
+import * as sharp from 'sharp';
+
 
 @Controller('api/article')
 @Crud({  //zelimo da imamo Crud operacije za model podataka koji je definisan tipom propisanim u definiciji Category entiteta
@@ -97,7 +101,7 @@ export class ArticleController {
                 }
                 //2. Tip sadrzaja: image/jpeg, image/png (mimetype)
                 if (!(file.mimetype.includes('jpeg') || file.mimetype.includes('png'))){
-                    req.fileFilterError = 'Bad file content!';
+                    req.fileFilterError = 'Bad file content type!';
                     callback(null, false);
                     return;
                 }
@@ -128,8 +132,23 @@ export class ArticleController {
         }
 
         //TODO: Real Mime Type check
+        //1) proveravamo da li mozemo da detektujemo file type
+        //2)ako smo detektovali uzimamo mime komponentu i pitamo da li je jpeg ili png
+        const fileTypeResult = await fileType.fromFile(photo.path); 
+        if(!fileTypeResult){ //nismo uspeli da detektujemo fileType
+            fs.unlinkSync(photo.path);//Obrisati taj fajl
+            return new ApiResponse('error', -4002,'Can not detect file type!'); //treci argument je poruka koja ce biti poslata
+        }
+
+        const realMimeType = fileTypeResult.mime;
+        if (!(realMimeType.includes('jpeg') || realMimeType.includes('png'))){
+            fs.unlinkSync(photo.path);//Obrisati taj fajl - sacekamo da se obrise pa saljemo response
+            return new ApiResponse('error', -4002,'Bad file content type!'); //treci argument je poruka koja ce biti poslata
+        }
 
         //TODO: Save a resized file
+        await this.createThumb(photo);
+        await this.createSmallImage(photo);
 
         //ako se ne desi neka greska odozgo, cuvamo fotografiju
         let imagePath = photo.filename; //u zapis u bazu podataka
@@ -145,5 +164,42 @@ export class ArticleController {
         }
 
         return savedPhoto; //uspesno sacuvana fotografija
+    }
+
+    async createThumb(photo){
+        const originalFilePath = photo.path;
+        const fileName = photo.filename;
+
+        const destinationFilePath = StorageConfig.photoDestination + "thumb/" + fileName;
+
+        await sharp(originalFilePath)  //pomocu sharp-a uzmi originalnu sliku
+            .resize({
+                fit: 'contain', //zelimo da se cela slika sacuva, pa ako nije istih proporcija dodace se beline - suprotno je 'cover' gube se delovi slike ako nije ista proporcija kao zeljena
+                width: StorageConfig.photoThumbSize.width,
+                height: StorageConfig.photoThumbSize.height,
+                background: {
+                    r: 255, g: 255, b: 255, alpha: 0.0 //bela pozadina ako je full color, ili bezbojno alpha: 0.0 za png
+                }
+            })
+            .toFile(destinationFilePath); //kada resize-uje sliku da je sacuva
+    }
+
+    async createSmallImage(photo){
+        const originalFilePath = photo.path;
+        const fileName = photo.filename;
+
+        const destinationFilePath = StorageConfig.photoDestination + "small/" + fileName;
+
+        await sharp(originalFilePath)  //pomocu sharp-a uzmi originalnu sliku
+            .resize({
+                fit: 'contain', //zelimo da se cela slika sacuva, pa ako nije istih proporcija dodace se beline - suprotno je 'cover' gube se delovi slike ako nije ista proporcija kao zeljena
+                width: StorageConfig.photoSmallSize.width,
+                height: StorageConfig.photoSmallSize.height,
+                background: {
+                    r: 255, g: 255, b: 255, alpha: 0.0 //bela pozadina ako je full color, ili bezbojno alpha: 0.0 za png
+                }
+            })
+            .toFile(destinationFilePath); //kada resize-uje sliku da je sacuva
+ 
     }
 }
