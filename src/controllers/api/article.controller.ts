@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Post, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Param, Post, Req, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { Crud } from "@nestjsx/crud";
 import { StorageConfig } from "config/storage.config";
@@ -87,15 +87,18 @@ export class ArticleController {
                     callback(null, fileName);
                 }
             }),
+            //fileFilter -> Da li dozvoljavamo upload fajla, pre nego sto se taj fajl sacuva u storage - Provera ekstenzije i mimetype-a
             fileFilter: (req, file, callback) => {
                 //1. proveri ektenzije: JPG, PNG
                 if(!file.originalname.toLowerCase().match(/\.(jpg|png)$/)){
-                    callback(new Error('Bad file extension!'), false); //vracamo false - ne prihvatamo takav fajl
+                    req.fileFilterError = 'Bad file extension!';
+                    callback(null, false); //kazemo ovde da nema errora, ali i dalje je false - ne treba prihvatiti ovaj fajl
                     return;
                 }
                 //2. Tip sadrzaja: image/jpeg, image/png (mimetype)
                 if (!(file.mimetype.includes('jpeg') || file.mimetype.includes('png'))){
-                    callback(new Error('Bad file content!'), false); //vracamo false - ne prihvatamo takav fajl
+                    req.fileFilterError = 'Bad file content!';
+                    callback(null, false);
                     return;
                 }
                 //Kada je sve kako treba
@@ -104,14 +107,31 @@ export class ArticleController {
             },
             limits: {
                 files: 1, //dozvoljavamo da se upload 1 fajl
-                fieldSize: StorageConfig.photoMaxFileSize, //taj max kapacitet je definisam u photo.config
+                fileSize: StorageConfig.photoMaxFileSize, //taj max kapacitet je definisam u photo.config
             },
 
         })
     )
 
     //KADA JE FAJL UPLOAD-OVAN pravi se zapis koji se salje bazi podataka posredstvom servisa 
-    async uploadPhoto(@Param('id') articleId: number, @UploadedFile() photo): Promise < ApiResponse | Photo> {
+    async uploadPhoto(
+        @Param('id') articleId: number, 
+        @UploadedFile() photo,
+        @Req() req
+    ): Promise < ApiResponse | Photo> {
+        if(req.fileFilterError){ //ako postoji ovaj fileFilterError necemo nista dalje da radimo
+            return new ApiResponse('error', -4002, req.fileFilterError); //treci argument je poruka koja ce biti poslata, a mi saljemo bas taj fileFilterError
+        }
+
+        if(!photo){ //ako iz nekog razloga ne postoji uploadovana slika
+            return new ApiResponse('error', -4002,'File not uploaded!'); //treci argument je poruka koja ce biti poslata
+        }
+
+        //TODO: Real Mime Type check
+
+        //TODO: Save a resized file
+
+        //ako se ne desi neka greska odozgo, cuvamo fotografiju
         let imagePath = photo.filename; //u zapis u bazu podataka
 
         const newPhoto: Photo = new Photo();
