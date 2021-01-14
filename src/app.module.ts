@@ -85,6 +85,7 @@ import { UserService } from './services/user/user.service';
   ], 
   exports: [
     AdministratorService, //njega export-ujemo jer se on koristi u jednom od middleware-a (AuthMiddleware) koji sluzi da proveri da li admin i dalje postoji u bazi sa tim tokenom
+    UserService,
   ],
 })
 export class AppModule implements NestModule{
