@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Post, Req, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Delete, Param, Post, Req, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { Crud } from "@nestjsx/crud";
 import { StorageConfig } from "config/storage.config";
@@ -187,4 +187,44 @@ export class ArticleController {
             .toFile(destinationFilePath); //kada resize-uje sliku da je sacuva
  
     }
+
+    //Mehanizam za brisanje datoteka
+    //http://localhost:3000/api/article/1/deletePhoto/45
+    @Delete(':articleId/deletePhoto/:photoId')
+    public async deletePhoto(
+        @Param('articleId') articleId: number,
+        @Param('photoId') photoId: number
+    ) {
+        //1) proveravamo da li uopste ta fotografija koja se brise postoji i da li se zajedno articleid i photoId match-uju
+        const photo = await this.photoService.findOne({
+            articleId: articleId, //articleId tog photo entiteta koji izvlacimo da je jednak articleId parametru iz request metoda
+            photoId: photoId
+        });
+
+        //ako fotografija ne postoji
+        if(!photo) {
+            return new ApiResponse('error', -4004,'Photo not found!'); 
+        }
+
+        //ako postoji treba da brisemo te fotografije iz photos, thumb i small foldera
+        try{
+            fs.unlinkSync(StorageConfig.photo.destination + photo.imagePath);
+            fs.unlinkSync(StorageConfig.photo.destination + 
+                        StorageConfig.photo.resize.thumb.directory + 
+                        photo.imagePath);
+            fs.unlinkSync(StorageConfig.photo.destination + 
+                        StorageConfig.photo.resize.small.directory + 
+                        photo.imagePath);
+        } catch (e) { }
+
+        //zahtev za brisanje fotografije iz baze podataka
+        const deleteResult = await this.photoService.deleteById(photo.photoId);
+        
+        if (deleteResult.affected === 0){  //affected - broj koji ako je 0 - 0 fajlova je obrisano / 1 - 1 fajl je obrisan 
+            return new ApiResponse('error', -4004,'Photo not found!'); 
+        }
+
+        return new ApiResponse('ok', 0,' One photo deleted!'); 
+    }
+
 }
