@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Req } from "@nestjs/common";
+import { Body, Controller, Post, Put, Req } from "@nestjs/common";
 import { LoginAdministratorDto } from "src/dtos/administrator/login.administrator.dto";
 import { ApiResponse } from "src/misc/api.response.class";
 import { AdministratorService } from "src/services/administrator/administrator.service";
@@ -8,9 +8,14 @@ import * as jwt from "jsonwebtoken";
 import { JwtDataAdministratorDto } from "src/dtos/administrator/jwt.data.administrator.dto";
 import { Request } from "express";
 import { jwtSecret } from "config/jwt.secret";
+import { UserRegistrationDto } from "src/dtos/user/user.registration.dto";
+import { UserService } from "src/services/user/user.service";
 @Controller('auth')
 export class AuthController {
-    constructor(public administratorService: AdministratorService) {}
+    constructor(
+        public administratorService: AdministratorService,
+        public userService: UserService,
+        ) {}
 
     @Post('login') //http://localhost:3000/auth/login
     async doLogin(@Body() data: LoginAdministratorDto, @Req() req: Request): Promise<LoginInfoAdministratorDto | ApiResponse>{ //ocekujemo DTO da bude dostavljen u telu - tu dobijamo username i pass
@@ -55,6 +60,12 @@ export class AuthController {
             token
         );
             return new Promise(resolve => resolve(responseObject));
+    }
+
+    @Put('user/register') // PUT http://localhost:3000/auth/user/register
+    async userRegister(@Body() data: UserRegistrationDto){ //body ovog put zahteva za registraciju korisnika ce dostavljati data strukture u obliku UserRegistrationDto
+        //pozivamo mehanizam iz user.service i prosledjujemo mu data tranfer objekat
+        return await this.userService.register(data);
     }
 
 }

@@ -25,6 +25,7 @@ import { AuthMiddleware } from './middlewares/auth.middleware';
 import { PhotoService } from './services/photo/photo.service';
 import { FeatureService } from './services/feature/feature.service';
 import { FeatureController } from './controllers/api/feature.controller';
+import { UserService } from './services/user/user.service';
 
 //
 @Module({
@@ -80,6 +81,7 @@ import { FeatureController } from './controllers/api/feature.controller';
     ArticleService,
     PhotoService,
     FeatureService,
+    UserService
   ], 
   exports: [
     AdministratorService, //njega export-ujemo jer se on koristi u jednom od middleware-a (AuthMiddleware) koji sluzi da proveri da li admin i dalje postoji u bazi sa tim tokenom

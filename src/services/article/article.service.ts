@@ -96,6 +96,7 @@ export class ArticleService extends TypeOrmCrudService<Article> {
         const lastPrice = existingArticle.articlePrices[existingArticle.articlePrices.length - 1].price;  //poslednji element
         const lastPriceString: string = Number(lastPrice).toFixed(2); // 50 -> "50.00"
 
+        //Restriktivno dodavanje dopunskih informacija - ako nema razloga da se menja informacija, nema razloga da se dodaje evidencija njene izmene u tabeli koja je relacijom povezana - articlePrices
         if (newPriceString !== lastPriceString) { //proveravamo da li je promenjena cena i samo onda radimo promenu cene, ako su iste nista
             const newArticlePrice = new ArticlePrice();
             newArticlePrice.articleId = articleId;
