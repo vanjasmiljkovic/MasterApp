@@ -10,11 +10,14 @@ import { jwtSecret } from "config/jwt.secret";
 export class AuthMiddleware implements NestMiddleware {
     constructor( private readonly administratorService: AdministratorService){ }
 
+    //1)ovaj middleware - presretne odredjeni request
+    //2)proveri da li ima autorizacioni header
     async use(req: Request, res: Response, next: NextFunction) {
         if (!req.headers.authorization){  //ako nemamo header koji se zove authorization prekidamo dalji rad
             throw new HttpException('Token not found', HttpStatus.UNAUTHORIZED);
         }
 
+        //3)uzima token iz tog header-a
         const token = req.headers.authorization;
 
         const tokenParts = token.split(' ');
@@ -24,7 +27,15 @@ export class AuthMiddleware implements NestMiddleware {
 
         const tokenString = tokenParts[1]; //2. deo tog token parts je zapravo nas token
 
-        const jwtData: JwtDataAdministratorDto = jwt.verify(tokenString, jwtSecret);
+        //4) taj drugi string tokena provlacimo kroz verify od jwt
+        let jwtData: JwtDataAdministratorDto; 
+
+        try {
+            jwtData = jwt.verify(tokenString, jwtSecret);
+        }catch(e){
+            throw new HttpException('Bad token found', HttpStatus.UNAUTHORIZED);
+        }
+
         if (!jwtData){  //ako nemamo jwtData znaci nije validan objekat
             throw new HttpException('Bad token found', HttpStatus.UNAUTHORIZED);
         }

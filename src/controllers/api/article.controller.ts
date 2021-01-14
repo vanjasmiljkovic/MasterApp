@@ -2,12 +2,12 @@ import { Body, Controller, Param, Post, Req, UploadedFile, UseInterceptors } fro
 import { FileInterceptor } from "@nestjs/platform-express";
 import { Crud } from "@nestjsx/crud";
 import { StorageConfig } from "config/storage.config";
-import { Article } from "entities/article.entity";
+import { Article } from "src/entities/article.entity";
 import { AddArticleDto } from "src/dtos/article/add.article.dto";
 import { ArticleService } from "src/services/article/article.service";
 import { diskStorage } from "multer";
 import { PhotoService } from "src/services/photo/photo.service";
-import { Photo } from "entities/photo.entity";
+import { Photo } from "src/entities/photo.entity";
 import { ApiResponse } from "src/misc/api.response.class";
 import * as fileType from 'file-type';
 import * as fs from 'fs';
@@ -64,7 +64,7 @@ export class ArticleController {
     @UseInterceptors(
         FileInterceptor('photo', {
             storage: diskStorage({
-                destination: StorageConfig.photoDestination,
+                destination: StorageConfig.photo.destination,
                 filename: (req, file, callback) => { //ova funkcija generise file name na osnovu originalnog file name-a
                     // 'Neka   slika.jpg' -> 20200420-3456765432-Neka-slika.jpg datum-random 10 brojeva i naziv slike
 
@@ -111,7 +111,7 @@ export class ArticleController {
             },
             limits: {
                 files: 1, //dozvoljavamo da se upload 1 fajl
-                fileSize: StorageConfig.photoMaxFileSize, //taj max kapacitet je definisam u photo.config
+                fileSize: StorageConfig.photo.maxSize, //taj max kapacitet je definisam u photo.config
             },
 
         })
@@ -147,8 +147,8 @@ export class ArticleController {
         }
 
         //TODO: Save a resized file
-        await this.createThumb(photo);
-        await this.createSmallImage(photo);
+        await this.createResizedImage(photo, StorageConfig.photo.resize.thumb); //primenjuje settings za thumb - iz storage.config.ts
+        await this.createResizedImage(photo, StorageConfig.photo.resize.small); //primenjuje settings za small - iz storage.config.ts
 
         //ako se ne desi neka greska odozgo, cuvamo fotografiju
         let imagePath = photo.filename; //u zapis u bazu podataka
@@ -166,35 +166,20 @@ export class ArticleController {
         return savedPhoto; //uspesno sacuvana fotografija
     }
 
-    async createThumb(photo){
+    async createResizedImage(photo, resizeSettings){
         const originalFilePath = photo.path;
         const fileName = photo.filename;
 
-        const destinationFilePath = StorageConfig.photoDestination + "thumb/" + fileName;
+        const destinationFilePath = 
+        StorageConfig.photo.destination + 
+        resizeSettings.directory + 
+        fileName;
 
         await sharp(originalFilePath)  //pomocu sharp-a uzmi originalnu sliku
             .resize({
                 fit: 'contain', //zelimo da se cela slika sacuva, pa ako nije istih proporcija dodace se beline - suprotno je 'cover' gube se delovi slike ako nije ista proporcija kao zeljena
-                width: StorageConfig.photoThumbSize.width,
-                height: StorageConfig.photoThumbSize.height,
-                background: {
-                    r: 255, g: 255, b: 255, alpha: 0.0 //bela pozadina ako je full color, ili bezbojno alpha: 0.0 za png
-                }
-            })
-            .toFile(destinationFilePath); //kada resize-uje sliku da je sacuva
-    }
-
-    async createSmallImage(photo){
-        const originalFilePath = photo.path;
-        const fileName = photo.filename;
-
-        const destinationFilePath = StorageConfig.photoDestination + "small/" + fileName;
-
-        await sharp(originalFilePath)  //pomocu sharp-a uzmi originalnu sliku
-            .resize({
-                fit: 'contain', //zelimo da se cela slika sacuva, pa ako nije istih proporcija dodace se beline - suprotno je 'cover' gube se delovi slike ako nije ista proporcija kao zeljena
-                width: StorageConfig.photoSmallSize.width,
-                height: StorageConfig.photoSmallSize.height,
+                width: resizeSettings.width,
+                height: resizeSettings.height,
                 background: {
                     r: 255, g: 255, b: 255, alpha: 0.0 //bela pozadina ako je full color, ili bezbojno alpha: 0.0 za png
                 }
