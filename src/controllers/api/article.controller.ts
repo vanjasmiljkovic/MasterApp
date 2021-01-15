@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Param, Patch, Post, Req, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Delete, Param, Patch, Post, Req, UploadedFile, UseGuards, UseInterceptors } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { Crud } from "@nestjsx/crud";
 import { StorageConfig } from "config/storage.config";
@@ -13,6 +13,8 @@ import * as fileType from 'file-type';
 import * as fs from 'fs';
 import * as sharp from 'sharp';
 import { EditArticleDto } from "src/dtos/article/edit.article.dto";
+import { RoleCheckerGuard } from "src/misc/role.checker.guard";
+import { AllowToRoles } from "src/misc/allow.to.roles.descriptor";
 
 
 @Controller('api/article')
@@ -61,18 +63,24 @@ export class ArticleController {
 
     //metod za dodavanje novog artikla
     @Post('createFull') //POST http://localhost:3000/api/article/createFull/
+    @UseGuards(RoleCheckerGuard) //koristi RoleCheckerGuard i dozvoli pristup samo administratoru(AllowToRoles - administrator)
+    @AllowToRoles('administrator')
     createFullArticle(@Body() data: AddArticleDto){ //ovaj Dto ima vise informacija nego sto sam artikal entitet ima, jer smo tu ukljucili i osobine, cenu itd.
         return this.service.createFullArticle(data);
     }
 
     //metod za editovanje postojeceg artikla PATCH http://localhost:3000/api/article/2/
     @Patch(':id')
+    @UseGuards(RoleCheckerGuard) //koristi RoleCheckerGuard i dozvoli pristup samo administratoru(AllowToRoles - administrator)
+    @AllowToRoles('administrator')
     //zahteva id, ali i da iz body-ja izvucemo informacije o tom data tranfer objektu
     editFullArticle(@Param('id') id: number, @Body() data: EditArticleDto){
         return this.service.editFullArticle(id, data);  //vracamo sve ono sto ce nas servis da vrati kada pozovemo editFullArticle - njemu prosledjujemo id artikla koji se menja i data kojima ce se zameniti
     }
 
     @Post(':id/uploadPhoto/') //POST https://localhost:3000/api/article/:id/uploadPhoto/
+    @UseGuards(RoleCheckerGuard) //koristi RoleCheckerGuard i dozvoli pristup samo administratoru(AllowToRoles - administrator)
+    @AllowToRoles('administrator')
     @UseInterceptors(
         FileInterceptor('photo', {
             storage: diskStorage({
@@ -203,6 +211,8 @@ export class ArticleController {
     //Mehanizam za brisanje datoteka
     //http://localhost:3000/api/article/1/deletePhoto/45
     @Delete(':articleId/deletePhoto/:photoId')
+    @UseGuards(RoleCheckerGuard) //koristi RoleCheckerGuard i dozvoli pristup samo administratoru(AllowToRoles - administrator)
+    @AllowToRoles('administrator')
     public async deletePhoto(
         @Param('articleId') articleId: number,
         @Param('photoId') photoId: number
