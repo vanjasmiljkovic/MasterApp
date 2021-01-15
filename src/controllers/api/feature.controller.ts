@@ -1,6 +1,8 @@
-import { Controller } from "@nestjs/common";
+import { Controller, UseGuards } from "@nestjs/common";
 import { Crud } from "@nestjsx/crud";
 import { Feature } from "src/entities/feature.entity";
+import { AllowToRoles } from "src/misc/allow.to.roles.descriptor";
+import { RoleCheckerGuard } from "src/misc/role.checker.guard";
 import { FeatureService } from "src/services/feature/feature.service";
 
 @Controller('api/feature')
@@ -27,6 +29,45 @@ import { FeatureService } from "src/services/feature/feature.service";
                 eager: false
             }
         }
+    },
+    routes: {
+        only: [  //ovo ce biti dostupno od mehanizama za upravljanje podacima nad feature controllerom
+            "createOneBase",
+            "createManyBase",
+            "updateOneBase",
+            "getManyBase",
+            "getOneBase",
+        ],
+        createOneBase: {
+            decorators: [  //niz dekoratora koje zelimo da primenimo na createOneBase metod
+                UseGuards(RoleCheckerGuard),
+                AllowToRoles('administrator'),
+            ]
+        },
+        createManyBase: {
+            decorators: [  //niz dekoratora koje zelimo da primenimo na createOneBase metod
+                UseGuards(RoleCheckerGuard),
+                AllowToRoles('administrator'),
+            ]
+        },
+        updateOneBase: {
+            decorators: [  //niz dekoratora koje zelimo da primenimo na createOneBase metod
+                UseGuards(RoleCheckerGuard),
+                AllowToRoles('administrator'),
+            ]
+        },
+        getManyBase: {
+            decorators: [  //niz dekoratora koje zelimo da primenimo na createOneBase metod
+                UseGuards(RoleCheckerGuard),
+                AllowToRoles('administrator', 'user'),
+            ]
+        },
+        getOneBase: {
+            decorators: [  //niz dekoratora koje zelimo da primenimo na createOneBase metod
+                UseGuards(RoleCheckerGuard),
+                AllowToRoles('administrator', 'user'),
+            ]
+        },
     }
 })
 export class FeatureController {

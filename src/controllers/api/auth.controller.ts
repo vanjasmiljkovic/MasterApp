@@ -11,6 +11,7 @@ import { jwtSecret } from "config/jwt.secret";
 import { UserRegistrationDto } from "src/dtos/user/user.registration.dto";
 import { UserService } from "src/services/user/user.service";
 import { LoginUserDto } from "src/dtos/user/login.user.dto";
+
 @Controller('auth')
 export class AuthController {
     constructor(
@@ -65,7 +66,8 @@ export class AuthController {
             return new Promise(resolve => resolve(responseObject));
     }
 
-    @Put('user/register') // PUT http://localhost:3000/auth/user/register
+    //Registracija korisnika
+    @Post('user/register') // POST http://localhost:3000/auth/user/register
     async userRegister(@Body() data: UserRegistrationDto){ //body ovog put zahteva za registraciju korisnika ce dostavljati data strukture u obliku UserRegistrationDto
         //pozivamo mehanizam iz user.service i prosledjujemo mu data tranfer objekat
         return await this.userService.register(data);

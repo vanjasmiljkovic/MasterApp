@@ -18,7 +18,7 @@ import { AllowToRoles } from "src/misc/allow.to.roles.descriptor";
 
 
 @Controller('api/article')
-@Crud({  //zelimo da imamo Crud operacije za model podataka koji je definisan tipom propisanim u definiciji Category entiteta
+@Crud({     //zelimo da imamo Crud operacije za model podataka koji je definisan tipom propisanim u definiciji Category entiteta
     model: {
         type: Article
     },
@@ -52,7 +52,22 @@ import { AllowToRoles } from "src/misc/allow.to.roles.descriptor";
         }
     },
     routes: {
-        exclude: [ 'updateOneBase', 'replaceOneBase', 'deleteOneBase' ]  //iskljucujemo da nam automatski implementira mehanizam aeditovanja
+        only: [ //OD SVIH FUNKCIONALNOSTI KOJE SU DOSTUPNE U CRUD KONTROLERU MI DOZVOLJAVAMO SAMO OVE DVE, JER SMO OSTALE RUCNO IMPLEMENTIRALI DOLE
+            'getOneBase',
+            'getManyBase'
+        ],
+        getOneBase: {
+            decorators: [
+                UseGuards(RoleCheckerGuard),
+                AllowToRoles('administrator', 'user')
+            ]
+        },
+        getManyBase: {
+            decorators: [
+                UseGuards(RoleCheckerGuard),
+                AllowToRoles('administrator', 'user')
+            ]
+        },
     }
 })
 export class ArticleController {
@@ -62,7 +77,7 @@ export class ArticleController {
     ) {}
 
     //metod za dodavanje novog artikla
-    @Post('createFull') //POST http://localhost:3000/api/article/createFull/
+    @Post() //POST http://localhost:3000/api/article/
     @UseGuards(RoleCheckerGuard) //koristi RoleCheckerGuard i dozvoli pristup samo administratoru(AllowToRoles - administrator)
     @AllowToRoles('administrator')
     createFullArticle(@Body() data: AddArticleDto){ //ovaj Dto ima vise informacija nego sto sam artikal entitet ima, jer smo tu ukljucili i osobine, cenu itd.
