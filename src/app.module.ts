@@ -28,6 +28,7 @@ import { FeatureController } from './controllers/api/feature.controller';
 import { UserService } from './services/user/user.service';
 import { CartService } from './services/cart/cart.service';
 import { UserCartController } from './controllers/api/user.cart.controller';
+import { OrderService } from './services/order/order.services';
 
 //
 @Module({
@@ -86,6 +87,7 @@ import { UserCartController } from './controllers/api/user.cart.controller';
     FeatureService,
     UserService,
     CartService,
+    OrderService,
   ], 
   exports: [
     AdministratorService, //njega export-ujemo jer se on koristi u jednom od middleware-a (AuthMiddleware) koji sluzi da proveri da li admin i dalje postoji u bazi sa tim tokenom

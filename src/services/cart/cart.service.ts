@@ -15,11 +15,6 @@ export class CartService {
         @InjectRepository(CartArticle) 
         private readonly cartArticle: Repository<CartArticle>,
 
-        @InjectRepository(Article) 
-        private readonly article: Repository<Article>,
-
-        @InjectRepository(Order) 
-        private readonly order: Repository<Order>
     ) { }
 
     async getLastActiveCartByUserId(userId: number): Promise<Cart | null>{  //moze da bude null - nema ni jedne korpe za tog korisnika, npr tek se registrovao
@@ -82,6 +77,7 @@ export class CartService {
                 "cartArticles",  //dodajemo relaciju cartArticles jer zelimo da vidimo koji su sve to artikli dodati i u kojoj kolicini u nas cart
                 "cartArticles.article",
                 "cartArticles.article.category",
+                "cartArticles.article.articlePrices",
             ],
         });
     }
