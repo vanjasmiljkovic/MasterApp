@@ -9,7 +9,7 @@ export class JwtDataDto {
     toPlainObject() {
         return {
             role: this.role,
-            administratorId: this.id,
+            id: this.id,
             identity: this.identity,
             exp: this.exp,
             ip: this.ip,

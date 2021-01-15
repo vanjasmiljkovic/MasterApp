@@ -38,7 +38,7 @@ export class Cart {
   @ManyToOne(
     () => User, 
     user => user.carts, 
-  { onDelete: "RESTRICT", onUpdate: "CASCADE"}
+  { onDelete: "NO ACTION", onUpdate: "CASCADE"}
   )
   @JoinColumn([{ name: "user_id", referencedColumnName: "userId" }])
   user: User;
