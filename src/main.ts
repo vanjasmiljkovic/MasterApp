@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { StorageConfig } from 'config/storage.config';
@@ -14,6 +15,9 @@ async function bootstrap() {
     //ali http://localhost:3000/assets/photos/ vraca error jer ne mzoe da prelistava folder - indeksiranje je zabranjeno
   });
 
+  //zelimo da nasa aplikacija koristi mehanizam validacije
+  app.useGlobalPipes(new ValidationPipe());
+  
   await app.listen(3000);
 }
 bootstrap();

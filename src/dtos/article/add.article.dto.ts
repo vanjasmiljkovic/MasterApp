@@ -1,14 +1,37 @@
+import * as Validator from "class-validator";
+import { ArticleFeatureComponentDto } from "./article.feature.component.dto";
+
 export class AddArticleDto{
+    @Validator.IsNotEmpty()
+    @Validator.IsString()
+    @Validator.Length(5, 128)
     name: string;
+
     categoryId: number;
+    @Validator.IsNotEmpty()
+    @Validator.IsString()
+    @Validator.Length(10, 255)
     excerpt: string;
+
+    @Validator.IsNotEmpty()
+    @Validator.IsString()
+    @Validator.Length(10, 255)
     description: string;
+
+    @Validator.IsNotEmpty()
+    @Validator.IsPositive()
+    @Validator.IsNumber({
+        allowInfinity: false,
+        allowNaN: false,
+        maxDecimalPlaces: 2,
+    })
     price: number;
     //features je ovakvih objekata niz gde svaki ima id i value
-    features: {
-        featureId: number;
-        value: string;
-    }[]; //niz
+    @Validator.IsArray()
+    @Validator.ValidateNested({
+        always: true, //svi objekti unutar ovog niza trebaju da budu validirani
+    })
+    features: ArticleFeatureComponentDto[]; //niz ovih komponenata
 }
 
 /*
