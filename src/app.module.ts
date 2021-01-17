@@ -29,6 +29,9 @@ import { UserService } from './services/user/user.service';
 import { CartService } from './services/cart/cart.service';
 import { UserCartController } from './controllers/api/user.cart.controller';
 import { OrderService } from './services/order/order.services';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { MailConfig } from 'config/mail.config';
+import { OrderMailer } from './services/order/order.mailer.service';
 
 //
 @Module({
@@ -68,7 +71,16 @@ import { OrderService } from './services/order/order.services';
       Photo,
       Documentation,
       User
-    ])
+    ]),
+    MailerModule.forRoot({
+      // smtps://username:password@smtp.gmail.com
+      transport: 'smtps://' + MailConfig.username + ':' +
+                              MailConfig.password + '@' +
+                              MailConfig.hostname,
+      defaults: {
+        from: MailConfig.senderEmail,
+      },
+    }),
   ],
   controllers: [
     AppController,
@@ -88,6 +100,7 @@ import { OrderService } from './services/order/order.services';
     UserService,
     CartService,
     OrderService,
+    OrderMailer,
   ], 
   exports: [
     AdministratorService, //njega export-ujemo jer se on koristi u jednom od middleware-a (AuthMiddleware) koji sluzi da proveri da li admin i dalje postoji u bazi sa tim tokenom
