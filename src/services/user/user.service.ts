@@ -6,10 +6,14 @@ import { User } from "src/entities/user.entity";
 import { ApiResponse } from "src/misc/api.response.class";
 import { Repository } from "typeorm";
 import * as crypto from "crypto";
+import { UserToken } from "src/entities/user-token.entity";
 
 @Injectable()
 export class UserService extends TypeOrmCrudService<User> {
-    constructor(@InjectRepository(User)private readonly user: Repository<User>){ //KADA POMENEM NEKI REPOZITORIJUM, ODMAH U app.module MORAM DA GA DODAM U TypeOrmModule
+    constructor(
+        @InjectRepository(User)private readonly user: Repository<User>,
+        @InjectRepository(UserToken) private readonly userToken: Repository<UserToken>,
+        ){ //KADA POMENEM NEKI REPOZITORIJUM, ODMAH U app.module MORAM DA GA DODAM U TypeOrmModule
         super(user); //prosledjujemo konstruktoru super klase TypeOrmCrudService
     }
 
@@ -54,6 +58,52 @@ export class UserService extends TypeOrmCrudService<User> {
         }
 
         return null;
+    }
+
+    async addToken(userId: number, token: string, expiresAt: string) {
+        const userToken = new UserToken();
+        userToken.userId = userId;
+        userToken.token = token;
+        userToken.expiresAt = expiresAt;
+
+        return await this.userToken.save(userToken);
+    }
+
+    async getUserToken(token: string): Promise<UserToken> {
+        return await this.userToken.findOne({
+            token: token,
+        });
+    }
+
+    async invalidateToken(token: string): Promise<UserToken | ApiResponse> {
+        const userToken = await this.userToken.findOne({
+            token: token,
+        });
+
+        if (!userToken) {
+            return new ApiResponse("error", -10001, "No such refresh token!")
+        }
+
+        userToken.isValid = 0;
+
+        await this.userToken.save(userToken);
+
+        return await this.getUserToken(token);
+    }
+
+    //u vracenom nizu mogu da se nalaze i UserToken i ApiResponsi
+    async invalidateUserTokens(userId: number): Promise<(UserToken | ApiResponse)[]> {
+        const userTokens = await this.userToken.find({
+            userId: userId,
+        });
+
+        const results = [];
+
+        for (const userToken of userTokens) {
+            results.push(this.invalidateToken(userToken.token));
+        }
+
+        return results;
     }
 }
 
