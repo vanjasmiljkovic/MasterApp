@@ -34,8 +34,4 @@ export class AddArticleDto{
     features: ArticleFeatureComponentDto[]; //niz ovih komponenata
 }
 
-/*
-    "features": { //key value parovi
-        "1": "1TB", //pod id=1 feature-a je vrednost 1TB
-        "3": "SSD" 
-*/
+

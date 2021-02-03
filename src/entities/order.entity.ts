@@ -9,6 +9,7 @@ import {
 import { Cart } from "./cart.entity";
 import * as Validator from "class-validator";
 
+@Index("fk_order_user_id", ["userId"], {})
 @Index("uq_order_cart_id", ["cartId"], { unique: true })
 @Entity("order")
 export class Order {
@@ -21,6 +22,9 @@ export class Order {
     default: () => "CURRENT_TIMESTAMP",
   })
   createdAt: Date;
+
+  @Column({ type: "int", name: "user_id", unique: true, unsigned: true })
+  userId: number;
 
   @Column({ type: "int", name: "cart_id", unique: true, unsigned: true })
   cartId: number;
@@ -38,7 +42,7 @@ export class Order {
   @OneToOne(
     () => Cart, 
     cart => cart.order, 
-    { onDelete: "RESTRICT", onUpdate: "CASCADE" }
+    { onDelete: "CASCADE", onUpdate: "RESTRICT" }
   )
   @JoinColumn([{ name: "cart_id", referencedColumnName: "cartId" }])
   cart: Cart;

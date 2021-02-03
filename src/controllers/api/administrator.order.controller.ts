@@ -12,6 +12,14 @@ export class AdministratorOrderController {
         private OrderService: OrderService,
     ) { }
 
+    //doprema informacije o svim porudzbinama 
+    @Get()  //GET http://localhost:3000/api/order/
+    @UseGuards(RoleCheckerGuard)
+    @AllowToRoles('administrator')
+    async getAll(): Promise <Order[]> {
+        return await this.OrderService.getAll();
+    }
+
     //doprema informacije o jednoj porudzbini na osnovu njenog id
     @Get(':id')  //GET http://localhost:3000/api/order/:id/
     @UseGuards(RoleCheckerGuard)

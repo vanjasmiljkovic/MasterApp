@@ -1,4 +1,9 @@
 export const StorageConfig = {
+    pdf: {
+        destination: '../storage/pdfs/',
+        urlPrefix: '/assets/pdfs',
+        maxAge: 1000 * 60 * 60 * 24 * 7, //broj milisekundi - 7 dana
+    },
     photo: {
         destination: '../storage/photos/',
         urlPrefix: '/assets/photos', //url kako treba da izgleda da bi se pristupilo photo

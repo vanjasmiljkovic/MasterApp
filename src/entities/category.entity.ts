@@ -13,7 +13,7 @@ import * as Validator from "class-validator";
 
 @Index("uq_category_name", ["name"], { unique: true })
 @Index("uq_category_image_path", ["imagePath"], { unique: true })
-@Index("fk_category_parent__category_id_idx", ["parentCategoryId"], {})
+@Index("fk_category_parent_category_id", ["parentCategoryId"], {})
 @Entity("category")
 
 export class Category {
@@ -42,7 +42,7 @@ export class Category {
 
   @Column({
     type: "int", 
-    name: "parent__category_id",
+    name: "parent_category_id",
     nullable: true,
     unsigned: true,
   })
@@ -60,7 +60,7 @@ export class Category {
     { onDelete: "RESTRICT", onUpdate: "CASCADE" }
   )
   @JoinColumn([
-    { name: "parent__category_id", referencedColumnName: "categoryId" },
+    { name: "parent_category_id", referencedColumnName: "categoryId" },
   ])
   parentCategory: Category;
 

@@ -135,7 +135,7 @@ export class ArticleService extends TypeOrmCrudService<Article> {
     }
 
     //Metod koji radi pretragu
-    async search(data: ArticleSearchDto): Promise<Article[]> {
+    async search(data: ArticleSearchDto): Promise<Article[] | ApiResponse> {
         const builder = await this.article.createQueryBuilder("article");
 
          //innerJoin ono sto se u nasem entitetu article zove articlePrices (relacija) - i to nazivamo ap - kao alijas
@@ -144,7 +144,10 @@ export class ArticleService extends TypeOrmCrudService<Article> {
             "ap",
             "ap.createdAt = (SELECT MAX(ap.created_at) FROM article_price AS ap WHERE ap.article_id = article.article_id)" //filtiramo da dobijemo samo najazurniju cenu! 
             ); 
-        builder.leftJoin("article.articleFeatures", "af") //leftJoin - jer kada se kreira artikal mozda nema odmah neki feature
+        builder.leftJoinAndSelect("article.articleFeatures", "af") //leftJoin - jer kada se kreira artikal mozda nema odmah neki feature
+        builder.leftJoinAndSelect("article.features", "features");
+        builder.leftJoinAndSelect("article.photos", "photos");
+        builder.leftJoinAndSelect("article.documentations", "documentations");
 
         //zavisno od toga sta je od mogucnosti filtriranja setovano radicemo adekvatnu pretragu
          builder.where('article.categoryId = :categoryId', { categoryId: data.categoryId })
@@ -213,18 +216,13 @@ export class ArticleService extends TypeOrmCrudService<Article> {
          builder.skip(page * perPage); //preskace onoliko koliko trazi po stranici puta broj stranice
          builder.take(perPage); //uzima onoliko koliko trazimo po stranici
 
-         let articleIds = await (await builder.getMany()).map(article => article.articleId);
+         let articles = await builder.getMany();
 
-         return await this.article.find({
-             where: { articleId: In(articleIds) },
-             relations: [
-                 "category",
-                 "articleFeatures",
-                 "features",
-                 "articlePrices",
-                 "photos"
-             ]
-         });
+         if (articles.length === 0) {
+            return new ApiResponse("ok", 0, "Nije pronadjen ni jedan proizvod! ")
+         }
+
+         return articles;
     }
 }
 

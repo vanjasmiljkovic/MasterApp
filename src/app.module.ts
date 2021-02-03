@@ -34,6 +34,8 @@ import { MailConfig } from 'config/mail.config';
 import { OrderMailer } from './services/order/order.mailer.service';
 import { AdministratorOrderController } from './controllers/api/administrator.order.controller';
 import { UserToken } from './entities/user-token.entity';
+import { AdministratorToken } from './entities/administrator-token.entity';
+import { PdfService } from './services/pdf/pdf.service';
 
 //
 @Module({
@@ -58,7 +60,8 @@ import { UserToken } from './entities/user-token.entity';
         Photo,
         Documentation,
         User,
-        UserToken
+        UserToken,
+        AdministratorToken,
       ] //povezali smo entitet - Entitete moramo sve da najbrojimo
     }),
     TypeOrmModule.forFeature([  //Repozitorijume samo one koje koristimo
@@ -74,7 +77,8 @@ import { UserToken } from './entities/user-token.entity';
       Photo,
       Documentation,
       User,
-      UserToken
+      UserToken,
+      AdministratorToken,
     ]),
     MailerModule.forRoot({
       // smtps://username:password@smtp.gmail.com
@@ -101,6 +105,7 @@ import { UserToken } from './entities/user-token.entity';
     CategoryService,
     ArticleService,
     PhotoService,
+    PdfService,
     FeatureService,
     UserService,
     CartService,

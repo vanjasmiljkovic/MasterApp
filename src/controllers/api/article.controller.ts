@@ -16,6 +16,8 @@ import { EditArticleDto } from "src/dtos/article/edit.article.dto";
 import { RoleCheckerGuard } from "src/misc/role.checker.guard";
 import { AllowToRoles } from "src/misc/allow.to.roles.descriptor";
 import { ArticleSearchDto } from "src/dtos/article/article.search.dto";
+import { Documentation } from "src/entities/documentation.entity";
+import { PdfService } from "src/services/pdf/pdf.service";
 
 
 @Controller('api/article')
@@ -74,7 +76,8 @@ import { ArticleSearchDto } from "src/dtos/article/article.search.dto";
 export class ArticleController {
     constructor(
         public service: ArticleService, 
-        public photoService: PhotoService    
+        public photoService: PhotoService,
+        public pdfService: PdfService,    
     ) {}
 
     //metod za dodavanje novog artikla
@@ -92,6 +95,135 @@ export class ArticleController {
     //zahteva id, ali i da iz body-ja izvucemo informacije o tom data tranfer objektu
     editFullArticle(@Param('id') id: number, @Body() data: EditArticleDto){
         return this.service.editFullArticle(id, data);  //vracamo sve ono sto ce nas servis da vrati kada pozovemo editFullArticle - njemu prosledjujemo id artikla koji se menja i data kojima ce se zameniti
+    }
+
+    @Post(':id/uploadPdf/')
+    @UseGuards(RoleCheckerGuard)
+    @AllowToRoles('administrator')
+    @UseInterceptors(
+        FileInterceptor('pdf', {
+            storage: diskStorage({
+                destination: StorageConfig.pdf.destination,
+                filename: (req, file, callback) => { //ova funkcija generise file name na osnovu originalnog file name-a
+                    // 'Neka   slika.jpg' -> 20200420-3456765432-Neka-slika.jpg datum-random 10 brojeva i naziv slike
+
+                    let original: string = file.originalname;
+
+                    let normalized = original.replace(/\s+/g, '-'); //bilo koju belinu koja se ponavlja jednom ili vise puta na nivou celog stringa zameni jednom -
+                    normalized = normalized.replace(/[^A-z0-9\.\-]/g, ''); //sve sto nije slova od a do z brojevi, tacka i - zameni praznim stringom
+                    let now = new Date();
+                    let datePart = '';
+                    datePart += now.getFullYear().toString();
+                    datePart += (now.getMonth() + 1).toString();
+                    datePart += now.getDate().toString();
+
+                    let fileName = datePart + '-' + normalized;
+
+                    fileName = fileName.toLowerCase();
+
+                    callback(null, fileName);
+                }
+            }),
+            fileFilter: (req, file, callback) => {
+                //1. proveri ektenzije: PDF
+                if(!file.originalname.toLowerCase().match(/\.(pdf)$/)){
+                    req.fileFilterError = 'Bad file extension!';
+                    callback(null, false); //kazemo ovde da nema errora, ali i dalje je false - ne treba prihvatiti ovaj fajl
+                    return;
+                }
+                //2. Tip sadrzaja: pdf (mimetype)
+                if (!(file.mimetype.includes('pdf'))){
+                    req.fileFilterError = 'Bad file content type!';
+                    callback(null, false);
+                    return;
+                }
+                //Kada je sve kako treba
+                callback(null, true); //nema erora, true znaci prihvatiti taj fajl
+
+            },
+            limits: {
+                files: 1
+            },
+        }),
+    )
+
+    async uploadPdf(
+        @Param('id') articleId: number, 
+        @UploadedFile() pdf,
+        @Req() req
+    ): Promise < ApiResponse | Documentation> {
+        if(req.fileFilterError){ //ako postoji ovaj fileFilterError necemo nista dalje da radimo
+            return new ApiResponse('error', -4002, req.fileFilterError); //treci argument je poruka koja ce biti poslata, a mi saljemo bas taj fileFilterError
+        }
+
+        if(!pdf){ //ako iz nekog razloga ne postoji uploadovana slika
+            return new ApiResponse('error', -4002,'File not uploaded!'); //treci argument je poruka koja ce biti poslata
+        }
+
+        //TODO: Real Mime Type check
+        //1) proveravamo da li mozemo da detektujemo file type
+        //2)ako smo detektovali uzimamo mime komponentu i pitamo da li je jpeg ili png
+        const fileTypeResult = await fileType.fromFile(pdf.path); 
+        if(!fileTypeResult){ //nismo uspeli da detektujemo fileType
+            fs.unlinkSync(pdf.path);//Obrisati taj fajl
+            return new ApiResponse('error', -4002,'Can not detect file type!'); //treci argument je poruka koja ce biti poslata
+        }
+
+        const realMimeType = fileTypeResult.mime;
+        if (!(realMimeType.includes('pdf') )){
+            fs.unlinkSync(pdf.path);//Obrisati taj fajl - sacekamo da se obrise pa saljemo response
+            return new ApiResponse('error', -4002,'Bad file content type!'); //treci argument je poruka koja ce biti poslata
+        }
+
+        let pdfPath = pdf.filename; //u zapis u bazu podataka
+
+        const newPdf: Documentation = new Documentation();
+        newPdf.articleId = articleId;
+        newPdf.pdfPath = pdfPath;
+
+        const savedPdf = await this.pdfService.add(newPdf); //add iz photoService
+
+        if (!savedPdf) {
+            return new ApiResponse('error', -4001);
+        }
+
+        return savedPdf; //uspesno sacuvan pdf
+    }
+
+    //Mehanizam za brisanje datoteka pdf
+    //http://localhost:3000/api/article/1/deletePdf/45
+    @Delete(':articleId/deletePdf/:pdfId')
+    @UseGuards(RoleCheckerGuard) //koristi RoleCheckerGuard i dozvoli pristup samo administratoru(AllowToRoles - administrator)
+    @AllowToRoles('administrator')
+    public async deletePdf(
+        @Param('articleId') articleId: number,
+        @Param('pdfId') documentationId: number
+    ) {
+        //1) proveravamo da li uopste taj pdf koja se brise postoji i da li se zajedno articleid i photoId match-uju
+        const pdf = await this.pdfService.findOne({
+            articleId: articleId, //articleId tog photo entiteta koji izvlacimo da je jednak articleId parametru iz request metoda
+            documentationId: documentationId,
+        });
+
+        //console.log(pdf);
+
+        //ako pdf ne postoji
+        if(!pdf) {
+            return new ApiResponse('error', -4004,'Pdf not found!'); 
+        }
+        //ako postoji brisemo taj pdf iz foldera
+        try{
+            fs.unlinkSync(StorageConfig.pdf.destination + pdf.pdfPath);
+        } catch (e) { }
+
+        //zahtev za brisanje fotografije iz baze podataka
+        const deleteResultPdf = await this.pdfService.deleteById(pdf.documentationId);
+        
+        if (deleteResultPdf.affected === 0){  //affected - broj koji ako je 0 - 0 fajlova je obrisano / 1 - 1 fajl je obrisan 
+            return new ApiResponse('error', -4004,'Pdf not found!'); 
+        }
+
+        return new ApiResponse('ok', 0,' One pdf deleted!'); 
     }
 
     @Post(':id/uploadPhoto/') //POST https://localhost:3000/api/article/:id/uploadPhoto/
@@ -217,7 +349,7 @@ export class ArticleController {
                 width: resizeSettings.width,
                 height: resizeSettings.height,
                 background: {
-                    r: 255, g: 255, b: 255, alpha: 0.0 //bela pozadina ako je full color, ili bezbojno alpha: 0.0 za png
+                    r: 255, g: 255, b: 255, alpha: 0.9 //bela pozadina ako je full color, ili bezbojno alpha: 0.0 za png
                 }
             })
             .toFile(destinationFilePath); //kada resize-uje sliku da je sacuva
@@ -238,6 +370,8 @@ export class ArticleController {
             articleId: articleId, //articleId tog photo entiteta koji izvlacimo da je jednak articleId parametru iz request metoda
             photoId: photoId
         });
+
+        console.log(photo);
 
         //ako fotografija ne postoji
         if(!photo) {
@@ -268,7 +402,7 @@ export class ArticleController {
     @Post('search')
     @UseGuards(RoleCheckerGuard)
     @AllowToRoles('administrator', 'user')
-    async search(@Body() data: ArticleSearchDto): Promise<Article[]> { //search uzima iz Body-ja data tipa articleSearchDto
+    async search(@Body() data: ArticleSearchDto): Promise<Article[] | ApiResponse> { //search uzima iz Body-ja data tipa articleSearchDto
         return await this.service.search(data);
     }
 }
