@@ -36,6 +36,8 @@ import { AdministratorOrderController } from './controllers/api/administrator.or
 import { UserToken } from './entities/user-token.entity';
 import { AdministratorToken } from './entities/administrator-token.entity';
 import { PdfService } from './services/pdf/pdf.service';
+import { ProductsController } from './controllers/api/products.controller';
+import { ArticleVisitorController } from './controllers/api/articlesVisitor.controller';
 
 //
 @Module({
@@ -99,6 +101,8 @@ import { PdfService } from './services/pdf/pdf.service';
     FeatureController,
     UserCartController,
     AdministratorOrderController,
+    ProductsController,
+    ArticleVisitorController
   ],
   providers: [ //komunikacija sa eksternim resursima - baza, api ...
     AdministratorService,
@@ -122,6 +126,6 @@ export class AppModule implements NestModule{
     consumer
       .apply(AuthMiddleware) //primeni AuthMiddleware na sve rute koje nisu auth/* a jesu api/*
       .exclude('auth/*') //na ovoj ruti se preskace middleware
-      .forRoutes('api/*'); //a ovde se primenjuje
+      .forRoutes('api/*') //a ovde se primenjuje
   } 
 }

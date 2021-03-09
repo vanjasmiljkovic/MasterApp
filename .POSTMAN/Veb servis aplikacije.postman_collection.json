@@ -56,20 +56,24 @@
 									"value": "Express"
 								},
 								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
 								{
 									"key": "Content-Length",
-									"value": "138"
+									"value": "635"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"8a-6yGFSIsWtxmEau8dcZcjPx97+gI\""
+									"value": "W/\"27b-Slx1c6aN1Zul/w6FrVfsPybUhk4\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 10 Jan 2021 22:09:02 GMT"
+									"value": "Tue, 09 Mar 2021 10:14:25 GMT"
 								},
 								{
 									"key": "Connection",
@@ -77,7 +81,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"administratorId\": 1,\n        \"username\": \"vanja\",\n        \"passwordHash\": \"vanjanina11\"\n    },\n    {\n        \"administratorId\": 2,\n        \"username\": \"aleksa\",\n        \"passwordHash\": \"aleksej\"\n    }\n]"
+							"body": "[\n    {\n        \"administratorId\": 1,\n        \"username\": \"vanja\",\n        \"passwordHash\": \"4895D28248C7F000C15086317E8010AF08092028D595DDB099859DB87B9DFF43FF506D6AD7A82CCE5675039FC1DE641DBF909FA87F534E115FB8FEDF31A73254\"\n    },\n    {\n        \"administratorId\": 2,\n        \"username\": \"aleksa\",\n        \"passwordHash\": \"aleksej\"\n    },\n    {\n        \"administratorId\": 3,\n        \"username\": \"vsmiljkovic\",\n        \"passwordHash\": \"1F2090A9D09C4C8555317A44F5B0BC3B4E8727BEC3865C4AAC84EE6BE0C93FA6AC5F39D2817E97B5BFCFCF0FF02E07376957B8BEB2D74CB1564C90FB591DEE48\"\n    },\n    {\n        \"administratorId\": 4,\n        \"username\": \"admin\",\n        \"passwordHash\": \"C484731969B767820934F6FB74A803F05B382E4B5B10383F6819A5374FCDA0FB8D0D7E14F9CF6EF8F76D406669C081821FC6F32D068E98B3F831B163C8A0F84B\"\n    }\n]"
 						}
 					]
 				},
@@ -610,6 +614,137 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+							"raw": "http://localhost:3000/api/article/33/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"article",
+								"33",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a single article when article doesn't exist",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/article/33/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"article",
+										"33",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-sm95f/qX4pTe+Gdc0icUf43I0KI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Feb 2021 13:51:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Article not found\",\n    \"error\": \"Not Found\"\n}"
+						},
+						{
+							"name": "Get a single article",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/article/2/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"article",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "774"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"306-M5EXyiYSR0r0/41m5lMSdBMUn6k\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 14 Jan 2021 13:16:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"articleId\": 2,\n    \"name\": \"ACME HD11 1TB\",\n    \"categoryId\": 5,\n    \"excerpt\": \"Neki kratak opis\",\n    \"description\": \"Detaljan opis\",\n    \"status\": \"available\",\n    \"isPromoted\": 0,\n    \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n    \"category\": {\n        \"categoryId\": 5,\n        \"name\": \"Hard diskovi\",\n        \"imagePath\": \"assets/pc/memory/hard.jpg\",\n        \"parentCategoryId\": 4\n    },\n    \"photos\": [\n        {\n            \"photoId\": 3,\n            \"articleId\": 2,\n            \"imagePath\": \"2021112-5811116908-profil.jpg\"\n        }\n    ],\n    \"articlePrices\": [\n        {\n            \"articlePriceId\": 4,\n            \"articleId\": 2,\n            \"price\": \"56.89\",\n            \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n        }\n    ],\n    \"documentations\": [],\n    \"articleFeatures\": [\n        {\n            \"articleFeatureId\": 4,\n            \"articleId\": 2,\n            \"featureId\": 1,\n            \"value\": \"1TB\"\n        },\n        {\n            \"articleFeatureId\": 5,\n            \"articleId\": 2,\n            \"featureId\": 3,\n            \"value\": \"SSD\"\n        }\n    ],\n    \"features\": [\n        {\n            \"featureId\": 1,\n            \"name\": \"Kapacitet\",\n            \"categoryId\": 5\n        },\n        {\n            \"featureId\": 3,\n            \"name\": \"Tehnologija\",\n            \"categoryId\": 5\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get many articles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
 							"raw": "http://localhost:3000/api/article/2/",
 							"protocol": "http",
 							"host": [
@@ -888,6 +1023,186 @@
 							"body": "{\n    \"articleId\": 2,\n    \"name\": \"ACME HDI1 1024GB\",\n    \"categoryId\": 5,\n    \"excerpt\": \"Kratak opis 2\",\n    \"description\": \"Duzi opis 2\",\n    \"status\": \"visible\",\n    \"isPromoted\": 1,\n    \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n    \"category\": {\n        \"categoryId\": 5,\n        \"name\": \"Hard diskovi\",\n        \"imagePath\": \"assets/pc/memory/hard.jpg\",\n        \"parentCategoryId\": 4\n    },\n    \"articleFeatures\": [\n        {\n            \"articleFeatureId\": 6,\n            \"articleId\": 2,\n            \"featureId\": 1,\n            \"value\": \"1024GB\"\n        },\n        {\n            \"articleFeatureId\": 7,\n            \"articleId\": 2,\n            \"featureId\": 2,\n            \"value\": \"SATA 3.0\"\n        }\n    ],\n    \"features\": [\n        {\n            \"featureId\": 1,\n            \"name\": \"Kapacitet\",\n            \"categoryId\": 5\n        },\n        {\n            \"featureId\": 2,\n            \"name\": \"Tip\",\n            \"categoryId\": 5\n        }\n    ],\n    \"articlePrices\": [\n        {\n            \"articlePriceId\": 4,\n            \"articleId\": 2,\n            \"price\": \"56.89\",\n            \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n        },\n        {\n            \"articlePriceId\": 5,\n            \"articleId\": 2,\n            \"price\": \"57.11\",\n            \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n        }\n    ]\n}"
 						}
 					]
+				},
+				{
+					"name": "Seacrh articles",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryId\" : 5,\n    \"keywords\": \"GB\",\n    \"priceMin\": 42,\n    \"priceMax\": 58,\n    \"feature\": [\n        {\n            \"featureId\": 2,\n            \"values\" : [\"SATA 3.0\", \"SATA 3.1\"]\n        }\n    ],\n    \"orderBy\": \"price\",\n    \"orderDirection\": \"ASC\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/article/search/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"article",
+								"search",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Seacrh articles",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"categoryId\" : 5,\n    \"keywords\": \"GB\",\n    \"priceMin\": 42,\n    \"priceMax\": 58,\n    \"feature\": [\n        {\n            \"featureId\": 2,\n            \"values\" : [\"SATA 3.0\", \"SATA 3.1\"]\n        }\n    ],\n    \"orderBy\": \"price\",\n    \"orderDirection\": \"ASC\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/article/search/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"article",
+										"search",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1889"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"761-S7ESFVrgK9Vti69Hq4AhbuwNkvg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 16 Jan 2021 22:51:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"articleId\": 2,\n        \"name\": \"ACME HD11 1024GB\",\n        \"categoryId\": 5,\n        \"excerpt\": \"Kratak opis 2\",\n        \"description\": \"Duzi opis 2\",\n        \"status\": \"visible\",\n        \"isPromoted\": 1,\n        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n        \"category\": {\n            \"categoryId\": 5,\n            \"name\": \"Hard diskovi\",\n            \"imagePath\": \"assets/pc/memory/hard.jpg\",\n            \"parentCategoryId\": 4\n        },\n        \"articleFeatures\": [\n            {\n                \"articleFeatureId\": 6,\n                \"articleId\": 2,\n                \"featureId\": 1,\n                \"value\": \"1024GB\"\n            },\n            {\n                \"articleFeatureId\": 7,\n                \"articleId\": 2,\n                \"featureId\": 2,\n                \"value\": \"SATA 3.0\"\n            }\n        ],\n        \"features\": [\n            {\n                \"featureId\": 1,\n                \"name\": \"Kapacitet\",\n                \"categoryId\": 5\n            },\n            {\n                \"featureId\": 2,\n                \"name\": \"Tip\",\n                \"categoryId\": 5\n            }\n        ],\n        \"articlePrices\": [\n            {\n                \"articlePriceId\": 4,\n                \"articleId\": 2,\n                \"price\": \"56.89\",\n                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n            },\n            {\n                \"articlePriceId\": 5,\n                \"articleId\": 2,\n                \"price\": \"57.11\",\n                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n            }\n        ],\n        \"photos\": [\n            {\n                \"photoId\": 3,\n                \"articleId\": 2,\n                \"imagePath\": \"2021112-5811116908-profil.jpg\"\n            }\n        ]\n    },\n    {\n        \"articleId\": 1,\n        \"name\": \"ACME HDD 512GB\",\n        \"categoryId\": 5,\n        \"excerpt\": \"kratak opis\",\n        \"description\": \"detaljan opis\",\n        \"status\": \"available\",\n        \"isPromoted\": 0,\n        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n        \"category\": {\n            \"categoryId\": 5,\n            \"name\": \"Hard diskovi\",\n            \"imagePath\": \"assets/pc/memory/hard.jpg\",\n            \"parentCategoryId\": 4\n        },\n        \"articleFeatures\": [\n            {\n                \"articleFeatureId\": 1,\n                \"articleId\": 1,\n                \"featureId\": 1,\n                \"value\": \"512GB\"\n            },\n            {\n                \"articleFeatureId\": 2,\n                \"articleId\": 1,\n                \"featureId\": 2,\n                \"value\": \"SATA 3.0\"\n            },\n            {\n                \"articleFeatureId\": 3,\n                \"articleId\": 1,\n                \"featureId\": 3,\n                \"value\": \"SSD\"\n            }\n        ],\n        \"features\": [\n            {\n                \"featureId\": 1,\n                \"name\": \"Kapacitet\",\n                \"categoryId\": 5\n            },\n            {\n                \"featureId\": 2,\n                \"name\": \"Tip\",\n                \"categoryId\": 5\n            },\n            {\n                \"featureId\": 3,\n                \"name\": \"Tehnologija\",\n                \"categoryId\": 5\n            }\n        ],\n        \"articlePrices\": [\n            {\n                \"articlePriceId\": 1,\n                \"articleId\": 1,\n                \"price\": \"45.00\",\n                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n            },\n            {\n                \"articlePriceId\": 2,\n                \"articleId\": 1,\n                \"price\": \"43.56\",\n                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n            },\n            {\n                \"articlePriceId\": 3,\n                \"articleId\": 1,\n                \"price\": \"42.25\",\n                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n            }\n        ],\n        \"photos\": [\n            {\n                \"photoId\": 5,\n                \"articleId\": 1,\n                \"imagePath\": \"2021113-7681824124-profil.jpg\"\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Upload Article Pdf",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a pdf",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all articles ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Get all articles ",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1405"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"57d-KHymzlAEp/tpXWED8r+VwPWuFNI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Mar 2021 10:11:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"categoryId\": 1,\n        \"name\": \"Termometri\",\n        \"imagePath\": \"assets/2021113-7681824124-profil.jpg\",\n        \"parentCategoryId\": null,\n        \"categories\": [\n            {\n                \"categoryId\": 3,\n                \"name\": \"Laptop racunari\",\n                \"imagePath\": \"assets/pc/laptop.jpg\",\n                \"parentCategoryId\": 1\n            },\n            {\n                \"categoryId\": 5,\n                \"name\": \"Hard diskovi\",\n                \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                \"parentCategoryId\": 1\n            },\n            {\n                \"categoryId\": 6,\n                \"name\": \"Laptop racunari 2\",\n                \"imagePath\": \"http://misevi/misevi.jpg\",\n                \"parentCategoryId\": 1\n            }\n        ],\n        \"features\": []\n    },\n    {\n        \"categoryId\": 2,\n        \"name\": \"Manometri\",\n        \"imagePath\": \"assets/manometri.jpg\",\n        \"parentCategoryId\": null,\n        \"categories\": [],\n        \"features\": [\n            {\n                \"featureId\": 4,\n                \"name\": \"Napon\",\n                \"categoryId\": 2\n            },\n            {\n                \"featureId\": 5,\n                \"name\": \"Snaga\",\n                \"categoryId\": 2\n            }\n        ]\n    },\n    {\n        \"categoryId\": 3,\n        \"name\": \"Laptop racunari\",\n        \"imagePath\": \"assets/pc/laptop.jpg\",\n        \"parentCategoryId\": 1,\n        \"categories\": [],\n        \"features\": [\n            {\n                \"featureId\": 6,\n                \"name\": \"Dijagonala ekrana\",\n                \"categoryId\": 3\n            },\n            {\n                \"featureId\": 7,\n                \"name\": \"Operativni sistem\",\n                \"categoryId\": 3\n            }\n        ]\n    },\n    {\n        \"categoryId\": 5,\n        \"name\": \"Hard diskovi\",\n        \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n        \"parentCategoryId\": 1,\n        \"categories\": [],\n        \"features\": [\n            {\n                \"featureId\": 1,\n                \"name\": \"Kapaciteti\",\n                \"categoryId\": 5\n            },\n            {\n                \"featureId\": 2,\n                \"name\": \"Tip\",\n                \"categoryId\": 5\n            },\n            {\n                \"featureId\": 3,\n                \"name\": \"Tehnologija\",\n                \"categoryId\": 5\n            },\n            {\n                \"featureId\": 8,\n                \"name\": \"Dimenzije\",\n                \"categoryId\": 5\n            }\n        ]\n    },\n    {\n        \"categoryId\": 6,\n        \"name\": \"Laptop racunari 2\",\n        \"imagePath\": \"http://misevi/misevi.jpg\",\n        \"parentCategoryId\": 1,\n        \"categories\": [],\n        \"features\": []\n    }\n]"
+						}
+					]
 				}
 			],
 			"event": [
@@ -927,7 +1242,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"admin\"\n}"
+							"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"admin12345\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3000/auth/administrator/login",
@@ -1017,7 +1332,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"admin\"\n}"
+									"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"admin12345\"\n}"
 								},
 								"url": {
 									"raw": "http://localhost:3000/auth/login",
@@ -1139,7 +1454,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\" : \"test@test.com\",\n    \"password\" : \"abc\"\n}"
+							"raw": "{\n    \"email\" : \"vanjasmiljkovic@gmail.com\",\n    \"password\" : \"vanjica123\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3000/auth/user/login",
@@ -1216,6 +1531,67 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": 1,\n    \"identity\": \"test@test.com\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImFkbWluaXN0cmF0b3JJZCI6MSwiaWRlbnRpdHkiOiJ0ZXN0QHRlc3QuY29tIiwiZXhwIjoxNjExODY0MDM4LjkzNSwiaXAiOiI6OjEiLCJ1YSI6IlBvc3RtYW5SdW50aW1lLzcuMjYuOCIsImlhdCI6MTYxMDY1NDQzOH0.2YhGkHC3j8NI8pYfVJFUwv4gUBiMLS9fulqBuGDO_X4\"\n}"
+						},
+						{
+							"name": "User Login - with refresh token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\" : \"vanjasmiljkovic@gmail.com\",\n    \"password\" : \"vanjica123\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/user/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "661"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"295-ViBKJyxc2xIU9B1Y2qO4pP0YdXk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Jan 2021 09:56:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"identity\": \"vanjasmiljkovic@gmail.com\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlkIjo0LCJpZGVudGl0eSI6InZhbmphc21pbGprb3ZpY0BnbWFpbC5jb20iLCJleHAiOjE2MTA5NjQwNjMuNDA5LCJpcCI6Ijo6MSIsInVhIjoiUG9zdG1hblJ1bnRpbWUvNy4yNi44IiwiaWF0IjoxNjEwOTYzNzYzfQ.NaZbk9AkHZCtsCA18G1q7-LLnR3bFGZZqrHNlqirY5o\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlkIjo0LCJpZGVudGl0eSI6InZhbmphc21pbGprb3ZpY0BnbWFpbC5jb20iLCJleHAiOjE2MTM2NDIxNjMuNDExLCJpcCI6Ijo6MSIsInVhIjoiUG9zdG1hblJ1bnRpbWUvNy4yNi44IiwiaWF0IjoxNjEwOTYzNzYzfQ.GIrYtdBRm0Hiyb1RUL5sgWASAlxF204HacmzKODesVs\",\n    \"refreshTokenExpiresAt\": \"2021-02-18T09:56:03.411Z\"\n}"
 						}
 					]
 				},
@@ -1226,7 +1602,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"test@test.com\",\n    \"password\": \"abc\",\n    \"forename\": \"Neko\",\n    \"surname\": \"Vanjic\",\n    \"phoneNumber\": \"+381657788965\",\n    \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n}",
+							"raw": "{\n    \"email\": \"vanjasmiljkovic@gmail.com\",\n    \"password\": \"vanjica123\",\n    \"forename\": \"vanja\",\n    \"surname\": \"Vanjic\",\n    \"phoneNumber\": \"+38165778654\",\n    \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1248,6 +1624,97 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Refresh user token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\" : \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlkIjo1LCJpZGVudGl0eSI6InZhbmphc21pbGprb3ZpYzEyM0BnbWFpbC5jb20iLCJleHAiOjE2MTM2NDQxNDAuMTI5LCJpcCI6Ijo6MSIsInVhIjoiUG9zdG1hblJ1bnRpbWUvNy4yNi44IiwiaWF0IjoxNjEwOTY1NzQwfQ.3N707z7ldamh0h0S5z-g_C9S2SYQm7hjOalfYGcjAM8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/user/refresh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"user",
+								"refresh"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Refresh user token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"token\" : \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlkIjo1LCJpZGVudGl0eSI6InZhbmphc21pbGprb3ZpYzEyM0BnbWFpbC5jb20iLCJleHAiOjE2MTM2NDQxNDAuMTI5LCJpcCI6Ijo6MSIsInVhIjoiUG9zdG1hblJ1bnRpbWUvNy4yNi44IiwiaWF0IjoxNjEwOTY1NzQwfQ.3N707z7ldamh0h0S5z-g_C9S2SYQm7hjOalfYGcjAM8\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/user/refresh",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"user",
+										"refresh"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "672"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a0-HaYk7MvVaSQZcbMUwSOoSLjFDsw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Jan 2021 11:26:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 5,\n    \"identity\": \"vanjasmiljkovic123@gmail.com\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlkIjo1LCJpZGVudGl0eSI6InZhbmphc21pbGprb3ZpYzEyM0BnbWFpbC5jb20iLCJleHAiOjE2MTA5Njk0OTguOTUyLCJpcCI6Ijo6MSIsInVhIjoiUG9zdG1hblJ1bnRpbWUvNy4yNi44IiwiaWF0IjoxNjEwOTY5MTk4fQ.ubsegcopg6r6ngeobA6IQFJGBJueML4lihnayYKO1Xw\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlkIjo1LCJpZGVudGl0eSI6InZhbmphc21pbGprb3ZpYzEyM0BnbWFpbC5jb20iLCJleHAiOjE2MTM2NDQxNDAuMTI5LCJpcCI6Ijo6MSIsInVhIjoiUG9zdG1hblJ1bnRpbWUvNy4yNi44IiwiaWF0IjoxNjEwOTY1NzQwfQ.3N707z7ldamh0h0S5z-g_C9S2SYQm7hjOalfYGcjAM8\",\n    \"refreshTokenExpiresAt\": \"2021-02-18T10:29:00.129Z\"\n}"
+						}
+					]
 				}
 			],
 			"auth": {
@@ -1657,8 +2124,665 @@
 							"body": "{\n    \"featureId\": 4,\n    \"name\": \"Napon\",\n    \"categoryId\": 2,\n    \"category\": {\n        \"categoryId\": 2,\n        \"name\": \"Kucna elektronika\",\n        \"imagePath\": \"assets/home.jpg\",\n        \"parentCategoryId\": null\n    }\n}"
 						}
 					]
+				},
+				{
+					"name": "Get distinct values for features of a single category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/feature/values/5/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"feature",
+								"values",
+								"5",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get distinct values for features of a single category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/feature/values/5/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"feature",
+										"values",
+										"5",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "182"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b6-NM1+4biKVmj0kdFwhrwA62Xzv9Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jan 2021 12:33:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"features\": [\n        {\n            \"featureId\": 1,\n            \"name\": \"Kapacitet\",\n            \"values\": [\n                \"1024GB\",\n                \"512GB\"\n            ]\n        },\n        {\n            \"featureId\": 2,\n            \"name\": \"Tip\",\n            \"values\": [\n                \"SATA 3.0\"\n            ]\n        },\n        {\n            \"featureId\": 3,\n            \"name\": \"Tehnologija\",\n            \"values\": [\n                \"SSD\"\n            ]\n        }\n    ]\n}"
+						}
+					]
 				}
 			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Cart and Order",
+			"item": [
+				{
+					"name": "Get current cart details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/user/cart/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"cart",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get current cart details",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/user/cart/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"cart",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "752"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f0-HViQYzHMeA3TI6ntGgmFZ7vfQbA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Jan 2021 19:39:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"cartId\": 15,\n    \"userId\": 1,\n    \"createdAt\": \"2021-01-15T19:37:17.000Z\",\n    \"user\": {\n        \"userId\": 1,\n        \"email\": \"test@test.com\",\n        \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n        \"forename\": \"Neko\",\n        \"surname\": \"Vanjic\",\n        \"phoneNumber\": \"+381657788965\",\n        \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n    },\n    \"cartArticles\": [\n        {\n            \"cartArticleId\": 1,\n            \"cartId\": 15,\n            \"articleId\": 1,\n            \"quantity\": 3,\n            \"article\": {\n                \"articleId\": 1,\n                \"name\": \"ACME HDD 512GB\",\n                \"categoryId\": 5,\n                \"excerpt\": \"kratak opis\",\n                \"description\": \"detaljan opis\",\n                \"status\": \"available\",\n                \"isPromoted\": 0,\n                \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                \"category\": {\n                    \"categoryId\": 5,\n                    \"name\": \"Hard diskovi\",\n                    \"imagePath\": \"assets/pc/memory/hard.jpg\",\n                    \"parentCategoryId\": 4\n                }\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Add article to the current cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"articleId\": 1,\n    \"quantity\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/user/cart/addToCart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"cart",
+								"addToCart"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add article to the current cart",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"articleId\": 1,\n    \"quantity\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/user/cart/addToCart",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"cart",
+										"addToCart"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "752"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f0-I0g1xFBiI+L1W2M6K3SvsYw5/Dc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Jan 2021 19:43:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"cartId\": 16,\n    \"userId\": 1,\n    \"createdAt\": \"2021-01-15T19:43:55.000Z\",\n    \"user\": {\n        \"userId\": 1,\n        \"email\": \"test@test.com\",\n        \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n        \"forename\": \"Neko\",\n        \"surname\": \"Vanjic\",\n        \"phoneNumber\": \"+381657788965\",\n        \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n    },\n    \"cartArticles\": [\n        {\n            \"cartArticleId\": 2,\n            \"cartId\": 16,\n            \"articleId\": 1,\n            \"quantity\": 1,\n            \"article\": {\n                \"articleId\": 1,\n                \"name\": \"ACME HDD 512GB\",\n                \"categoryId\": 5,\n                \"excerpt\": \"kratak opis\",\n                \"description\": \"detaljan opis\",\n                \"status\": \"available\",\n                \"isPromoted\": 0,\n                \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                \"category\": {\n                    \"categoryId\": 5,\n                    \"name\": \"Hard diskovi\",\n                    \"imagePath\": \"assets/pc/memory/hard.jpg\",\n                    \"parentCategoryId\": 4\n                }\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Change article quantity in the current cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Make an order for the current cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/user/cart/makeOrder/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"cart",
+								"makeOrder",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Make an order for the current cart",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/user/cart/makeOrder/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"cart",
+										"makeOrder",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-7IURZqLP0tFQhBVZPX44dA+dxYY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Jan 2021 21:49:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"statusCode\": -7003,\n    \"message\": \"This cart is empty\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlkIjo0LCJpZGVudGl0eSI6InZhbmphc21pbGprb3ZpY0BnbWFpbC5jb20iLCJleHAiOjE2MTE2ODY5NzEuMjU5LCJpcCI6Ijo6MSIsInVhIjoiUG9zdG1hblJ1bnRpbWUvNy4yNi44IiwiaWF0IjoxNjExNjg2NjcxfQ.O4iNe0elMA432375Ux92NrSNIdtyQjlmEZoAIaEheKU",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Get order information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/order/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get order information",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/order/6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1712"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6b0-oejwwg5stcQpsV77FrYyk6p258Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Jan 2021 15:28:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"orderId\": 6,\n    \"createdAt\": \"2021-01-16T23:57:53.000Z\",\n    \"cartId\": 19,\n    \"status\": \"pending\",\n    \"cart\": {\n        \"cartId\": 19,\n        \"userId\": 1,\n        \"createdAt\": \"2021-01-16T23:57:21.000Z\",\n        \"user\": {\n            \"userId\": 1,\n            \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n            \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n            \"forename\": \"Neko\",\n            \"surname\": \"Vanjic\",\n            \"phoneNumber\": \"+381657788965\",\n            \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n        },\n        \"cartArticles\": [\n            {\n                \"cartArticleId\": 9,\n                \"cartId\": 19,\n                \"articleId\": 1,\n                \"quantity\": 2,\n                \"article\": {\n                    \"articleId\": 1,\n                    \"name\": \"ACME HDD 512GB\",\n                    \"categoryId\": 5,\n                    \"excerpt\": \"kratak opis\",\n                    \"description\": \"detaljan opis\",\n                    \"status\": \"available\",\n                    \"isPromoted\": 0,\n                    \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                    \"category\": {\n                        \"categoryId\": 5,\n                        \"name\": \"Hard diskovi\",\n                        \"imagePath\": \"assets/pc/memory/hard.jpg\",\n                        \"parentCategoryId\": 4\n                    },\n                    \"articlePrices\": [\n                        {\n                            \"articlePriceId\": 1,\n                            \"articleId\": 1,\n                            \"price\": \"45.00\",\n                            \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                        },\n                        {\n                            \"articlePriceId\": 2,\n                            \"articleId\": 1,\n                            \"price\": \"43.56\",\n                            \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                        },\n                        {\n                            \"articlePriceId\": 3,\n                            \"articleId\": 1,\n                            \"price\": \"42.25\",\n                            \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"cartArticleId\": 10,\n                \"cartId\": 19,\n                \"articleId\": 2,\n                \"quantity\": 3,\n                \"article\": {\n                    \"articleId\": 2,\n                    \"name\": \"ACME HD11 1024GB\",\n                    \"categoryId\": 5,\n                    \"excerpt\": \"Kratak opis 2\",\n                    \"description\": \"Duzi opis 2\",\n                    \"status\": \"visible\",\n                    \"isPromoted\": 1,\n                    \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                    \"category\": {\n                        \"categoryId\": 5,\n                        \"name\": \"Hard diskovi\",\n                        \"imagePath\": \"assets/pc/memory/hard.jpg\",\n                        \"parentCategoryId\": 4\n                    },\n                    \"articlePrices\": [\n                        {\n                            \"articlePriceId\": 4,\n                            \"articleId\": 2,\n                            \"price\": \"56.89\",\n                            \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                        },\n                        {\n                            \"articlePriceId\": 5,\n                            \"articleId\": 2,\n                            \"price\": \"57.11\",\n                            \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Change order status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newStatus\" : \"accepted\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/order/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order",
+								"5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Change order status",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"newStatus\" : \"accepted\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/order/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1712"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6b0-GMy2xAy9nIanl6RRi+7FyoQAnXg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Jan 2021 15:30:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"orderId\": 5,\n    \"createdAt\": \"2021-01-16T23:56:30.000Z\",\n    \"cartId\": 18,\n    \"status\": \"accepted\",\n    \"cart\": {\n        \"cartId\": 18,\n        \"userId\": 1,\n        \"createdAt\": \"2021-01-16T23:55:41.000Z\",\n        \"user\": {\n            \"userId\": 1,\n            \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n            \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n            \"forename\": \"Neko\",\n            \"surname\": \"Vanjic\",\n            \"phoneNumber\": \"+381657788965\",\n            \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n        },\n        \"cartArticles\": [\n            {\n                \"cartArticleId\": 8,\n                \"cartId\": 18,\n                \"articleId\": 1,\n                \"quantity\": 2,\n                \"article\": {\n                    \"articleId\": 1,\n                    \"name\": \"ACME HDD 512GB\",\n                    \"categoryId\": 5,\n                    \"excerpt\": \"kratak opis\",\n                    \"description\": \"detaljan opis\",\n                    \"status\": \"available\",\n                    \"isPromoted\": 0,\n                    \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                    \"category\": {\n                        \"categoryId\": 5,\n                        \"name\": \"Hard diskovi\",\n                        \"imagePath\": \"assets/pc/memory/hard.jpg\",\n                        \"parentCategoryId\": 4\n                    },\n                    \"articlePrices\": [\n                        {\n                            \"articlePriceId\": 1,\n                            \"articleId\": 1,\n                            \"price\": \"45.00\",\n                            \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                        },\n                        {\n                            \"articlePriceId\": 2,\n                            \"articleId\": 1,\n                            \"price\": \"43.56\",\n                            \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                        },\n                        {\n                            \"articlePriceId\": 3,\n                            \"articleId\": 1,\n                            \"price\": \"42.25\",\n                            \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"cartArticleId\": 7,\n                \"cartId\": 18,\n                \"articleId\": 2,\n                \"quantity\": 1,\n                \"article\": {\n                    \"articleId\": 2,\n                    \"name\": \"ACME HD11 1024GB\",\n                    \"categoryId\": 5,\n                    \"excerpt\": \"Kratak opis 2\",\n                    \"description\": \"Duzi opis 2\",\n                    \"status\": \"visible\",\n                    \"isPromoted\": 1,\n                    \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                    \"category\": {\n                        \"categoryId\": 5,\n                        \"name\": \"Hard diskovi\",\n                        \"imagePath\": \"assets/pc/memory/hard.jpg\",\n                        \"parentCategoryId\": 4\n                    },\n                    \"articlePrices\": [\n                        {\n                            \"articlePriceId\": 4,\n                            \"articleId\": 2,\n                            \"price\": \"56.89\",\n                            \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                        },\n                        {\n                            \"articlePriceId\": 5,\n                            \"articleId\": 2,\n                            \"price\": \"57.11\",\n                            \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all orders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49820"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c29c-M+WSInDzj2tzpaL1/C1RgIU9x/M\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Feb 2021 17:32:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"orderId\": 1,\n        \"createdAt\": \"2021-01-15T19:40:17.000Z\",\n        \"userId\": 5,\n        \"cartId\": 15,\n        \"status\": \"shipped\",\n        \"cart\": {\n            \"cartId\": 15,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-15T19:37:17.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 1,\n                    \"cartId\": 15,\n                    \"articleId\": 1,\n                    \"quantity\": 5,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 3,\n        \"createdAt\": \"2021-01-15T21:50:48.000Z\",\n        \"userId\": 5,\n        \"cartId\": 16,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 16,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-15T19:43:55.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 4,\n                    \"cartId\": 16,\n                    \"articleId\": 1,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 4,\n        \"createdAt\": \"2021-01-16T23:23:02.000Z\",\n        \"userId\": 3,\n        \"cartId\": 17,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 17,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-15T21:51:26.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 5,\n                    \"cartId\": 17,\n                    \"articleId\": 1,\n                    \"quantity\": 3,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 6,\n                    \"cartId\": 17,\n                    \"articleId\": 2,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 5,\n        \"createdAt\": \"2021-01-16T23:56:30.000Z\",\n        \"userId\": 1,\n        \"cartId\": 18,\n        \"status\": \"accepted\",\n        \"cart\": {\n            \"cartId\": 18,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-16T23:55:41.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 8,\n                    \"cartId\": 18,\n                    \"articleId\": 1,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 7,\n                    \"cartId\": 18,\n                    \"articleId\": 2,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 6,\n        \"createdAt\": \"2021-01-16T23:57:53.000Z\",\n        \"userId\": 5,\n        \"cartId\": 19,\n        \"status\": \"rejected\",\n        \"cart\": {\n            \"cartId\": 19,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-16T23:57:21.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 9,\n                    \"cartId\": 19,\n                    \"articleId\": 1,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 10,\n                    \"cartId\": 19,\n                    \"articleId\": 2,\n                    \"quantity\": 3,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 7,\n        \"createdAt\": \"2021-01-16T23:59:08.000Z\",\n        \"userId\": 5,\n        \"cartId\": 20,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 20,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-16T23:58:55.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 12,\n                    \"cartId\": 20,\n                    \"articleId\": 1,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 11,\n                    \"cartId\": 20,\n                    \"articleId\": 2,\n                    \"quantity\": 3,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 8,\n        \"createdAt\": \"2021-01-17T00:02:10.000Z\",\n        \"userId\": 1,\n        \"cartId\": 21,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 21,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-17T00:01:57.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 13,\n                    \"cartId\": 21,\n                    \"articleId\": 1,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 14,\n                    \"cartId\": 21,\n                    \"articleId\": 2,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 9,\n        \"createdAt\": \"2021-01-17T00:08:04.000Z\",\n        \"userId\": 1,\n        \"cartId\": 22,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 22,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-17T00:07:58.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 15,\n                    \"cartId\": 22,\n                    \"articleId\": 2,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 10,\n        \"createdAt\": \"2021-01-17T00:11:30.000Z\",\n        \"userId\": 1,\n        \"cartId\": 23,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 23,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-17T00:11:24.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 16,\n                    \"cartId\": 23,\n                    \"articleId\": 2,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 11,\n        \"createdAt\": \"2021-01-17T09:13:16.000Z\",\n        \"userId\": 1,\n        \"cartId\": 24,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 24,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-17T09:12:07.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 17,\n                    \"cartId\": 24,\n                    \"articleId\": 2,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 12,\n        \"createdAt\": \"2021-01-17T09:13:50.000Z\",\n        \"userId\": 1,\n        \"cartId\": 25,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 25,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-17T09:13:41.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 18,\n                    \"cartId\": 25,\n                    \"articleId\": 2,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 13,\n        \"createdAt\": \"2021-01-17T09:19:53.000Z\",\n        \"userId\": 5,\n        \"cartId\": 26,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 26,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-17T09:19:45.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 19,\n                    \"cartId\": 26,\n                    \"articleId\": 2,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 14,\n        \"createdAt\": \"2021-01-17T09:44:13.000Z\",\n        \"userId\": 1,\n        \"cartId\": 27,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 27,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-17T09:44:03.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 21,\n                    \"cartId\": 27,\n                    \"articleId\": 1,\n                    \"quantity\": 4,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 20,\n                    \"cartId\": 27,\n                    \"articleId\": 2,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 15,\n        \"createdAt\": \"2021-01-17T09:48:12.000Z\",\n        \"userId\": 1,\n        \"cartId\": 28,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 28,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-17T09:48:01.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 22,\n                    \"cartId\": 28,\n                    \"articleId\": 1,\n                    \"quantity\": 4,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 23,\n                    \"cartId\": 28,\n                    \"articleId\": 2,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 16,\n        \"createdAt\": \"2021-01-17T09:54:01.000Z\",\n        \"userId\": 2,\n        \"cartId\": 29,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 29,\n            \"userId\": 1,\n            \"createdAt\": \"2021-01-17T09:53:53.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"vanja.smiljkovic.1997@gmail.com\",\n                \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n                \"forename\": \"Neko\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+381657788965\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 25,\n                    \"cartId\": 29,\n                    \"articleId\": 1,\n                    \"quantity\": 3,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 24,\n                    \"cartId\": 29,\n                    \"articleId\": 2,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 24,\n        \"createdAt\": \"2021-01-25T20:29:34.000Z\",\n        \"userId\": 1,\n        \"cartId\": 38,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 38,\n            \"userId\": 4,\n            \"createdAt\": \"2021-01-25T20:28:52.000Z\",\n            \"user\": {\n                \"userId\": 4,\n                \"email\": \"vanjasmiljkovic@gmail.com\",\n                \"passwordHash\": \"AA3C3626FC0EF9FAD00004AED5B1BC26912F61FB1664E162BDD9F140FEFA8EDE75CEA172E84ECCEDDE73B40AC2E0913F8D5C445BEED9A60FA19726D12926CA02\",\n                \"forename\": \"vanja\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+38165778654\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 43,\n                    \"cartId\": 38,\n                    \"articleId\": 1,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 44,\n                    \"cartId\": 38,\n                    \"articleId\": 2,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 25,\n        \"createdAt\": \"2021-01-25T20:32:01.000Z\",\n        \"userId\": 1,\n        \"cartId\": 39,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 39,\n            \"userId\": 4,\n            \"createdAt\": \"2021-01-25T20:31:58.000Z\",\n            \"user\": {\n                \"userId\": 4,\n                \"email\": \"vanjasmiljkovic@gmail.com\",\n                \"passwordHash\": \"AA3C3626FC0EF9FAD00004AED5B1BC26912F61FB1664E162BDD9F140FEFA8EDE75CEA172E84ECCEDDE73B40AC2E0913F8D5C445BEED9A60FA19726D12926CA02\",\n                \"forename\": \"vanja\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+38165778654\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 45,\n                    \"cartId\": 39,\n                    \"articleId\": 1,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 26,\n        \"createdAt\": \"2021-01-25T21:09:16.000Z\",\n        \"userId\": 4,\n        \"cartId\": 40,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 40,\n            \"userId\": 4,\n            \"createdAt\": \"2021-01-25T20:35:04.000Z\",\n            \"user\": {\n                \"userId\": 4,\n                \"email\": \"vanjasmiljkovic@gmail.com\",\n                \"passwordHash\": \"AA3C3626FC0EF9FAD00004AED5B1BC26912F61FB1664E162BDD9F140FEFA8EDE75CEA172E84ECCEDDE73B40AC2E0913F8D5C445BEED9A60FA19726D12926CA02\",\n                \"forename\": \"vanja\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+38165778654\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 46,\n                    \"cartId\": 40,\n                    \"articleId\": 1,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 47,\n                    \"cartId\": 40,\n                    \"articleId\": 2,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 27,\n        \"createdAt\": \"2021-01-26T18:32:49.000Z\",\n        \"userId\": 4,\n        \"cartId\": 41,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 41,\n            \"userId\": 4,\n            \"createdAt\": \"2021-01-26T18:32:23.000Z\",\n            \"user\": {\n                \"userId\": 4,\n                \"email\": \"vanjasmiljkovic@gmail.com\",\n                \"passwordHash\": \"AA3C3626FC0EF9FAD00004AED5B1BC26912F61FB1664E162BDD9F140FEFA8EDE75CEA172E84ECCEDDE73B40AC2E0913F8D5C445BEED9A60FA19726D12926CA02\",\n                \"forename\": \"vanja\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+38165778654\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 48,\n                    \"cartId\": 41,\n                    \"articleId\": 1,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 49,\n                    \"cartId\": 41,\n                    \"articleId\": 2,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 28,\n        \"createdAt\": \"2021-01-26T18:47:43.000Z\",\n        \"userId\": 2,\n        \"cartId\": 42,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 42,\n            \"userId\": 4,\n            \"createdAt\": \"2021-01-26T18:33:42.000Z\",\n            \"user\": {\n                \"userId\": 4,\n                \"email\": \"vanjasmiljkovic@gmail.com\",\n                \"passwordHash\": \"AA3C3626FC0EF9FAD00004AED5B1BC26912F61FB1664E162BDD9F140FEFA8EDE75CEA172E84ECCEDDE73B40AC2E0913F8D5C445BEED9A60FA19726D12926CA02\",\n                \"forename\": \"vanja\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+38165778654\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 50,\n                    \"cartId\": 42,\n                    \"articleId\": 1,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 51,\n                    \"cartId\": 42,\n                    \"articleId\": 2,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 29,\n        \"createdAt\": \"2021-01-26T18:47:55.000Z\",\n        \"userId\": 1,\n        \"cartId\": 43,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 43,\n            \"userId\": 4,\n            \"createdAt\": \"2021-01-26T18:47:51.000Z\",\n            \"user\": {\n                \"userId\": 4,\n                \"email\": \"vanjasmiljkovic@gmail.com\",\n                \"passwordHash\": \"AA3C3626FC0EF9FAD00004AED5B1BC26912F61FB1664E162BDD9F140FEFA8EDE75CEA172E84ECCEDDE73B40AC2E0913F8D5C445BEED9A60FA19726D12926CA02\",\n                \"forename\": \"vanja\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+38165778654\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 52,\n                    \"cartId\": 43,\n                    \"articleId\": 1,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 53,\n                    \"cartId\": 43,\n                    \"articleId\": 2,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 30,\n        \"createdAt\": \"2021-01-27T10:32:50.000Z\",\n        \"userId\": 4,\n        \"cartId\": 44,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 44,\n            \"userId\": 4,\n            \"createdAt\": \"2021-01-26T19:18:01.000Z\",\n            \"user\": {\n                \"userId\": 4,\n                \"email\": \"vanjasmiljkovic@gmail.com\",\n                \"passwordHash\": \"AA3C3626FC0EF9FAD00004AED5B1BC26912F61FB1664E162BDD9F140FEFA8EDE75CEA172E84ECCEDDE73B40AC2E0913F8D5C445BEED9A60FA19726D12926CA02\",\n                \"forename\": \"vanja\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+38165778654\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 54,\n                    \"cartId\": 44,\n                    \"articleId\": 1,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 55,\n                    \"cartId\": 44,\n                    \"articleId\": 2,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 17,\n        \"createdAt\": \"2021-01-25T17:34:34.000Z\",\n        \"userId\": 2,\n        \"cartId\": 30,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 30,\n            \"userId\": 5,\n            \"createdAt\": \"2021-01-22T23:03:54.000Z\",\n            \"user\": {\n                \"userId\": 5,\n                \"email\": \"vanjasmiljkovic123@gmail.com\",\n                \"passwordHash\": \"DAEF4953B9783365CAD6615223720506CC46C5167CD16AB500FA597AA08FF964EB24FB19687F34D7665F778FCB6C5358FC0A5B81E1662CF90F73A2671C53F991\",\n                \"forename\": \"vanja\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+38165778111\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 32,\n                    \"cartId\": 30,\n                    \"articleId\": 1,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 18,\n        \"createdAt\": \"2021-01-25T17:36:30.000Z\",\n        \"userId\": 3,\n        \"cartId\": 31,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 31,\n            \"userId\": 5,\n            \"createdAt\": \"2021-01-25T17:34:43.000Z\",\n            \"user\": {\n                \"userId\": 5,\n                \"email\": \"vanjasmiljkovic123@gmail.com\",\n                \"passwordHash\": \"DAEF4953B9783365CAD6615223720506CC46C5167CD16AB500FA597AA08FF964EB24FB19687F34D7665F778FCB6C5358FC0A5B81E1662CF90F73A2671C53F991\",\n                \"forename\": \"vanja\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+38165778111\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 33,\n                    \"cartId\": 31,\n                    \"articleId\": 1,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 19,\n        \"createdAt\": \"2021-01-25T18:43:30.000Z\",\n        \"userId\": 3,\n        \"cartId\": 32,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 32,\n            \"userId\": 5,\n            \"createdAt\": \"2021-01-25T18:06:17.000Z\",\n            \"user\": {\n                \"userId\": 5,\n                \"email\": \"vanjasmiljkovic123@gmail.com\",\n                \"passwordHash\": \"DAEF4953B9783365CAD6615223720506CC46C5167CD16AB500FA597AA08FF964EB24FB19687F34D7665F778FCB6C5358FC0A5B81E1662CF90F73A2671C53F991\",\n                \"forename\": \"vanja\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+38165778111\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 34,\n                    \"cartId\": 32,\n                    \"articleId\": 1,\n                    \"quantity\": 5,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 20,\n        \"createdAt\": \"2021-01-25T20:12:41.000Z\",\n        \"userId\": 3,\n        \"cartId\": 33,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 33,\n            \"userId\": 5,\n            \"createdAt\": \"2021-01-25T20:12:20.000Z\",\n            \"user\": {\n                \"userId\": 5,\n                \"email\": \"vanjasmiljkovic123@gmail.com\",\n                \"passwordHash\": \"DAEF4953B9783365CAD6615223720506CC46C5167CD16AB500FA597AA08FF964EB24FB19687F34D7665F778FCB6C5358FC0A5B81E1662CF90F73A2671C53F991\",\n                \"forename\": \"vanja\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+38165778111\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 35,\n                    \"cartId\": 33,\n                    \"articleId\": 1,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 36,\n                    \"cartId\": 33,\n                    \"articleId\": 2,\n                    \"quantity\": 3,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 21,\n        \"createdAt\": \"2021-01-25T20:12:51.000Z\",\n        \"userId\": 3,\n        \"cartId\": 34,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 34,\n            \"userId\": 5,\n            \"createdAt\": \"2021-01-25T20:12:46.000Z\",\n            \"user\": {\n                \"userId\": 5,\n                \"email\": \"vanjasmiljkovic123@gmail.com\",\n                \"passwordHash\": \"DAEF4953B9783365CAD6615223720506CC46C5167CD16AB500FA597AA08FF964EB24FB19687F34D7665F778FCB6C5358FC0A5B81E1662CF90F73A2671C53F991\",\n                \"forename\": \"vanja\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+38165778111\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 37,\n                    \"cartId\": 34,\n                    \"articleId\": 1,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 38,\n                    \"cartId\": 34,\n                    \"articleId\": 2,\n                    \"quantity\": 7,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 22,\n        \"createdAt\": \"2021-01-25T20:14:18.000Z\",\n        \"userId\": 1,\n        \"cartId\": 35,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 35,\n            \"userId\": 5,\n            \"createdAt\": \"2021-01-25T20:13:33.000Z\",\n            \"user\": {\n                \"userId\": 5,\n                \"email\": \"vanjasmiljkovic123@gmail.com\",\n                \"passwordHash\": \"DAEF4953B9783365CAD6615223720506CC46C5167CD16AB500FA597AA08FF964EB24FB19687F34D7665F778FCB6C5358FC0A5B81E1662CF90F73A2671C53F991\",\n                \"forename\": \"vanja\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+38165778111\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 39,\n                    \"cartId\": 35,\n                    \"articleId\": 1,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 40,\n                    \"cartId\": 35,\n                    \"articleId\": 2,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 23,\n        \"createdAt\": \"2021-01-25T20:17:18.000Z\",\n        \"userId\": 1,\n        \"cartId\": 36,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 36,\n            \"userId\": 5,\n            \"createdAt\": \"2021-01-25T20:17:01.000Z\",\n            \"user\": {\n                \"userId\": 5,\n                \"email\": \"vanjasmiljkovic123@gmail.com\",\n                \"passwordHash\": \"DAEF4953B9783365CAD6615223720506CC46C5167CD16AB500FA597AA08FF964EB24FB19687F34D7665F778FCB6C5358FC0A5B81E1662CF90F73A2671C53F991\",\n                \"forename\": \"vanja\",\n                \"surname\": \"Vanjic\",\n                \"phoneNumber\": \"+38165778111\",\n                \"postalAddress\": \"Put za negde bb, Beograd, Srbija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 41,\n                    \"cartId\": 36,\n                    \"articleId\": 1,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"ACME HDDX 512GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"kratak opis\",\n                        \"description\": \"Detaljan opis Detaljan opis Detaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan opisDetaljan \",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-01-11T12:18:05.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2021-01-07T11:55:10.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.56\",\n                                \"createdAt\": \"2021-01-10T10:23:34.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 1,\n                                \"price\": \"42.25\",\n                                \"createdAt\": \"2021-01-11T12:58:55.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 12,\n                                \"articleId\": 1,\n                                \"price\": \"60.00\",\n                                \"createdAt\": \"2021-02-01T17:36:22.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 42,\n                    \"cartId\": 36,\n                    \"articleId\": 2,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 5,\n                        \"excerpt\": \"Kratak opis 2\",\n                        \"description\": \"Duzi opis 2\",\n                        \"status\": \"hidden\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2021-01-12T12:27:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 5,\n                            \"name\": \"Hard diskovi\",\n                            \"imagePath\": \"assets/pc/memory/2021113-7681824124-profil.jpg\",\n                            \"parentCategoryId\": 4\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 2,\n                                \"price\": \"56.89\",\n                                \"createdAt\": \"2021-01-12T12:27:19.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 5,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2021-01-14T17:21:37.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    }\n]"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW5pc3RyYXRvciIsImlkIjo0LCJpZGVudGl0eSI6ImFkbWluIiwiZXhwIjoxNjEyMjg3NDUzLjI2LCJpcCI6Ijo6MSIsInVhIjoiUG9zdG1hblJ1bnRpbWUvNy4yNi44IiwiaWF0IjoxNjEyMjg3MTUzfQ.NGR4HIMbEl0LUm9pfNUho5pJC18nOBxKiAasq6Q9dQ8",
+						"type": "string"
+					}
+				]
+			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -1686,7 +2810,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW5pc3RyYXRvciIsImFkbWluaXN0cmF0b3JJZCI6NCwiaWRlbnRpdHkiOiJhZG1pbiIsImV4cCI6MTYxMTkyMzMyNi40NTksImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI2LjgiLCJpYXQiOjE2MTA3MTM3MjZ9.jwLWI3l_3o1LcPkJsxUPml8-n_HV94JJtDxJBAFRjAI",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW5pc3RyYXRvciIsImlkIjo0LCJpZGVudGl0eSI6ImFkbWluIiwiZXhwIjoxNjE1Mjg1MTA2LjExNSwiaXAiOiI6OjEiLCJ1YSI6IlBvc3RtYW5SdW50aW1lLzcuMjYuOCIsImlhdCI6MTYxNTI4NDgwNn0.xf0Pkph08209_Ww_sHsRJoM6B5weMjiF0Ruk5ilNIx4",
 				"type": "string"
 			}
 		]
